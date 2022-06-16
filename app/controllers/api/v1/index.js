@@ -1,10 +1,7 @@
- const carController = require("./carController");
- const userController = require("./userController");
- const authController = require("./authController");
- 
- module.exports = {
-   carController,
-   userController,
-   authController,
- };
- 
+const userController = require("./userController");
+const authController = require("./authController");
+
+module.exports = {
+  userController,
+  authController,
+};
