@@ -36,34 +36,22 @@ module.exports = {
         throw { status: 422, message: "email field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
-      // if (!reqBody.role)
-      //   throw { status: 422, message: "role field cannot empty" };
-      // if (
-      //   !(
-      //     reqBody.role === "seller" ||
-      //     reqBody.role === "buyer"
-      //   )
-      // )
-      //   throw {
-      //     status: 422,
-      //     message: "set role to buyer or and seller",
-      //   };
-      // if (reqBody.role === "seller") {
-      //   if (!(user || user?.role === "buyer"))
-      //     throw { status: 401, message: "must role buyer" };
-      // }
+      if (!reqBody.role)
+        throw { status: 422, message: "role field cannot empty" };
       if (
-        await userRepository.api.v1.userRepository.findByName(
-          reqBody.nama
+        !(
+          reqBody.role === "seller" ||
+          reqBody.role === "buyer"
         )
       )
-        throw { status: 409, message: "choose another name" };
-      if (
-        await userRepository.api.v1.userRepository.findByEmail(
-          reqBody.nama
-        )
-      )
-        throw { status: 409, message: "choose another email" };
+        throw {
+          status: 422,
+          message: "set role to buyer or and seller",
+        };
+      if (reqBody.role === "seller") {
+        if (!(user || user?.role === "buyer"))
+          throw { status: 401, message: "must role buyer" };
+      }
 
       reqBody.password = await encryptPassword(reqBody.password);
       return userRepository.api.v1.userRepository.save(reqBody);
@@ -78,10 +66,11 @@ module.exports = {
         throw { status: 422, message: "email field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
-      const email = await userRepository.api.v1.userRepository.findByEmail(
-        reqBody.email
-      );
-      if (!email) throw { status: 401, message: "email or password wrong" };
+      const email = await userRepository.api.v1.userRepository.getOne({
+        where: { email }
+    });
+      if (!email) 
+        throw { status: 401, message: "email or password wrong" };
       if (!checkPassword(reqBody.password, user.password))
         throw { status: 401, message: "name or password wrong" };
       return createToken({

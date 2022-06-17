@@ -2,7 +2,7 @@ const {
     DB_USERNAME = "postgres",
     DB_PASSWORD = "123",
     DB_HOST = "127.0.0.1",
-    DB_NAME = "db_secondhand",
+    DB_NAME = "db_sayajual",
 } = process.env;
 
 module.exports = {
