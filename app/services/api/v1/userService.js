@@ -52,7 +52,18 @@ module.exports = {
         if (!(user || user?.role === "buyer"))
           throw { status: 401, message: "must role buyer" };
       }
-
+      if (
+        await userRepository.api.v1.userRepository.getOne({
+          where: { nama }
+      })
+      )
+        throw { status: 409, message: "choose another name" };
+      if (
+        await userRepository.api.v1.userRepository.Users.getOne({
+          where: { email }
+      })
+      )
+        throw { status: 409, message: "choose another email" };
       reqBody.password = await encryptPassword(reqBody.password);
       return userRepository.api.v1.userRepository.save(reqBody);
     } catch (err) {
