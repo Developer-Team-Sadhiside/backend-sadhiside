@@ -36,28 +36,28 @@ module.exports = {
         throw { status: 422, message: "email field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
-      if (!reqBody.role)
-        throw { status: 422, message: "role field cannot empty" };
-      if (
-        !(
-          reqBody.role === "seller" ||
-          reqBody.role === "buyer"
-        )
-      )
-        throw {
-          status: 422,
-          message: "set role to buyer or and seller",
-        };
-      if (reqBody.role === "buyer") {
-        if (!(user || user?.role === "buyer" || user?.role === "seller"))
-          throw { status: 401, message: "must have role buyer" };
-      }
+      // if (!reqBody.role)
+      //   throw { status: 422, message: "role field cannot empty" };
+      // if (
+      //   !(
+      //     reqBody.role === "seller" ||
+      //     reqBody.role === "buyer"
+      //   )
+      // )
+      //   throw {
+      //     status: 422,
+      //     message: "set role to buyer or and seller",
+      //   };
+      // if (reqBody.role === "seller") {
+      //   if (!(user || user?.role === "buyer"))
+      //     throw { status: 401, message: "must role buyer" };
+      // }
       if (
         await userRepository.api.v1.userRepository.findByName(
           reqBody.nama
         )
       )
-      throw { status: 409, message: "choose another name" };
+        throw { status: 409, message: "choose another name" };
       if (
         await userRepository.api.v1.userRepository.findByEmail(
           reqBody.nama

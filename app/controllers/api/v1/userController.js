@@ -5,10 +5,7 @@ module.exports = {
     try {
       const user = await userService.api.v1.userService.register(req.user, req.body);
       res.status(202).json({
-        nama: user.nama,
-        email:user.email,
-        password:user.password,
-        role: user.role,
+        email: user.email,
       });
     } catch (err) {
       res.status(err.status || 400).json({
@@ -29,7 +26,6 @@ module.exports = {
   async currentUser(req, res) {
     res.status(200).json({
       nama: req.user?.nama,
-      role: req.user?.role,
     });
   },
 };

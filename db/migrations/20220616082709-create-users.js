@@ -10,15 +10,12 @@ module.exports = {
       },
       nama: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       kota: {
         type: Sequelize.STRING
