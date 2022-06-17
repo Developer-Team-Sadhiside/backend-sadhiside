@@ -13,7 +13,7 @@ module.exports = {
         process.env.ACCESS_TOKEN_SECRET
       );
       return await userRepository.api.v1.userRepository.findByName(
-        tokenPayload.name
+        tokenPayload.nama
       );
     } catch (err) {
       throw err;

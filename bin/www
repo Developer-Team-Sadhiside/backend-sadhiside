@@ -1,6 +1,10 @@
 const app = require("../app")
 const port = process.env.PORT || 8000;
 
+app.get('/', (req, res) => {
+  res.send('Your server was connected sir - Backend Beloved')
+})
+
 app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`)
   console.log(`Enjoy my friends - Much Love from Backend`)

@@ -30,35 +30,32 @@ function createToken(payload) {
 module.exports = {
   async register(user, reqBody) {
     try {
-      if (!reqBody.username)
-        throw { status: 422, message: "username field cannot empty" };
-      if (!reqBody.fullname)
-        throw { status: 422, message: "fullname field cannot empty" };
+      if (!reqBody.nama)
+        throw { status: 422, message: "name field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
       if (!reqBody.role)
         throw { status: 422, message: "role field cannot empty" };
       if (
         !(
-          reqBody.role === "superadmin" ||
-          reqBody.role === "member" ||
-          reqBody.role === "admin"
+          reqBody.role === "seller" ||
+          reqBody.role === "buyer"
         )
       )
         throw {
           status: 422,
-          message: "set role to member, admin or superadmin",
+          message: "set role to buyer or and seller",
         };
-      if (reqBody.role === "admin") {
-        if (!(user || user?.role === "member" || user?.role === "admin"))
-          throw { status: 401, message: "login as superadmin needed to this action" };
+      if (reqBody.role === "buyer") {
+        if (!(user || user?.role === "buyer" || user?.role === "seller"))
+          throw { status: 401, message: "must have role buyer" };
       }
       if (
-        await userRepository.api.v1.userRepository.findByUsername(
-          reqBody.username
+        await userRepository.api.v1.userRepository.findByName(
+          reqBody.nama
         )
       )
-        throw { status: 409, message: "choose another username" };
+        throw { status: 409, message: "choose another name" };
       reqBody.password = await encryptPassword(reqBody.password);
       return userRepository.api.v1.userRepository.save(reqBody);
     } catch (err) {
@@ -68,30 +65,21 @@ module.exports = {
 
   async login(reqBody) {
     try {
-      if (!reqBody.username)
-        throw { status: 422, message: "username field cannot empty" };
+      if (!reqBody.nama)
+        throw { status: 422, message: "name field cannot empty" };
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
-      const user = await userRepository.api.v1.userRepository.findByUsername(
-        reqBody.username
+      const user = await userRepository.api.v1.userRepository.findByName(
+        reqBody.nama
       );
-      if (!user) throw { status: 401, message: "username or password wrong" };
+      if (!user) throw { status: 401, message: "name or password wrong" };
       if (!checkPassword(reqBody.password, user.password))
-        throw { status: 401, message: "username or password wrong" };
+        throw { status: 401, message: "name or password wrong" };
       return createToken({
-        username: user.username,
-        fullname: user.fullname,
+        nama: user.nama,
       });
     } catch (err) {
       throw err;
     }
-  },
-
-  async update(username, reqBody) {
-    const admin = await this.findByUsername(username);
-    return adminRepository.api.v1.adminRepository.update(
-      reqBody,
-      admin.username
-    );
   },
 };

@@ -1,8 +1,8 @@
 const { Users } = require("../../../models");
 
 module.exports = {
-  async findByName(name) {
-    return await Users.findByPk(name);
+  async findByName(nama) {
+    return await Users.findByPk(nama);
   },
 
   async save(saveArgs) {
