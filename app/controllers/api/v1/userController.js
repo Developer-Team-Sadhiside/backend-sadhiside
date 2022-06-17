@@ -6,6 +6,8 @@ module.exports = {
       const user = await userService.api.v1.userService.register(req.user, req.body);
       res.status(202).json({
         nama: user.nama,
+        email:user.email,
+        password:user.password,
         role: user.role,
       });
     } catch (err) {

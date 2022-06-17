@@ -1,8 +1,8 @@
 const {
     DB_USERNAME = "postgres",
-    DB_PASSWORD = "1234",
+    DB_PASSWORD = "123",
     DB_HOST = "127.0.0.1",
-    DB_NAME = "db_jualbeli",
+    DB_NAME = "db_secondhand",
 } = process.env;
 
 module.exports = {
