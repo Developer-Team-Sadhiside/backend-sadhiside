@@ -15,7 +15,7 @@ router.get("/document", swaggerUi.setup(swaggerDocument));
 // user router
 router.post(
     "/v1/users/register",
-    controllers.api.v1.authController.authorize,
+    controllers.api.v1.userController.authorize,
     controllers.api.v1.userController.postRegister
 );
 router.post(

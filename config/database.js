@@ -1,10 +1,10 @@
 require('dotenv').config();
 
 const {
-    DB_USER,
-    DB_PASSWORD,
-    DB_NAME,
-    DB_HOST,
+    DB_USER = "postgres",
+    DB_PASSWORD = "1234",
+    DB_HOST = "127.0.0.1",
+    DB_NAME = "db_sayajual",
 } = process.env;
 
 module.exports = {
@@ -14,12 +14,13 @@ module.exports = {
         database: `${DB_NAME}`,
         host: DB_HOST,
         dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
+        //for connect to heroku, uncomment code below
+        // dialectOptions: {
+        //     ssl: {
+        //         require: true,
+        //         rejectUnauthorized: false,
+        //     },
+        // },
     },
     test: {
         username: DB_USER,
@@ -27,12 +28,12 @@ module.exports = {
         database: `${DB_NAME}`,
         host: DB_HOST,
         dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
+        // dialectOptions: {
+        //     ssl: {
+        //         require: true,
+        //         rejectUnauthorized: false,
+        //     },
+        // },
     },
     production: {
         username: DB_USER,
@@ -40,12 +41,12 @@ module.exports = {
         database: `${DB_NAME}`,
         host: DB_HOST,
         dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
+        // dialectOptions: {
+        //     ssl: {
+        //         require: true,
+        //         rejectUnauthorized: false,
+        //     },
+        // },
     },
 
 };

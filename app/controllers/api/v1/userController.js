@@ -1,6 +1,23 @@
 const userService = require("../../../services");
+const auth = require("../../../middlewares")
 
 module.exports = {
+  async authorize(req, res, next) {
+    try {
+      if (req.headers.authorization === undefined) {
+        next();
+        return;
+      }
+      req.user = await auth.authorize(
+        req.headers.authorization
+      );
+      next();
+    } catch (err) {
+      res.status(err.status || 400).json({
+        message: err.message,
+      });
+    }
+  },
   async postRegister(req, res) {
     try {
       const user = await userService.api.v1.userService.register(req.user, req.body);

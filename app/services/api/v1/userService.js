@@ -58,7 +58,6 @@ module.exports = {
       console.log(reqBody.email)
       if (!reqBody.email)
         throw { status: 422, message: "email field cannot empty" };
-      console.log("akupingin ngerti")
       if (!reqBody.password)
         throw { status: 422, message: "password field cannot empty" };
       const user = await userRepository.api.v1.userRepository.findByEmail(reqBody.email);
