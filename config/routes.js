@@ -21,7 +21,11 @@ router.post(
 router.post(
     "/v1/users/login", controllers.api.v1.userController.postLogin
 );
-
+router.put(
+    "/v1/users/addProfil/:id",
+    controllers.api.v1.userController.authorize,
+    controllers.api.v1.userController.postProfile
+);
 appRouter.use(apiRouter);
 
 module.exports = router;

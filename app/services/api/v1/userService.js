@@ -51,8 +51,6 @@ module.exports = {
     }
   },
 
-
-
   async login(reqBody) {
     try {
       console.log(reqBody.email)
@@ -66,7 +64,7 @@ module.exports = {
       if (!checkPassword(reqBody.password, user.password))
         throw { status: 401, message: "name or password wrong" };
       return createToken({
-        id: user.id,
+        nama: user.nama,
         name: user.name,
         email: user.email,
       }, process.env.ACCESS_TOKEN_SECRET || 'Token', {
@@ -75,5 +73,13 @@ module.exports = {
     } catch (err) {
       throw err;
     }
+  },
+
+  async profile(id, reqBody) {
+    return await userRepository.api.v1.userRepository.addProfil(id, reqBody);
+  },
+
+  async get(id) {
+    return await userRepository.api.v1.userRepository.findById(id);
   },
 };
