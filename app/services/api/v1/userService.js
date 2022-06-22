@@ -64,8 +64,8 @@ module.exports = {
       if (!checkPassword(reqBody.password, user.password))
         throw { status: 401, message: "name or password wrong" };
       return createToken({
+        id: user.id,
         nama: user.nama,
-        name: user.name,
         email: user.email,
       }, process.env.ACCESS_TOKEN_SECRET || 'Token', {
         expiresIn: '1h'

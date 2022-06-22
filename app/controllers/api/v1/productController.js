@@ -3,7 +3,6 @@ const productService = require("../../../services")
 
 module.exports = {
 	async createProducts(req, res) {
-   const users await
 		productService.api.v1.productService.addProduct(req.body)
 			.then((createdproduct) => {
 				res.status(201).json({

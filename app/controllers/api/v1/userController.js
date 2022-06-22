@@ -1,12 +1,11 @@
 const userService = require("../../../services");
-const auth = require("../../../middlewares")
+const auth = require("../../../middlewares/authentication")
 
 module.exports = {
   async authorize(req, res, next) {
     try {
       if (req.headers.authorization === undefined) {
-        next();
-        return;
+        throw new Error("gaboleh ya")
       }
       req.user = await auth.authorize(
         req.headers.authorization
@@ -18,7 +17,7 @@ module.exports = {
       });
     }
   },
-  async postRegister(req, res) {
+  async postRegister(req, res, next) {
     try {
       const user = await userService.api.v1.userService.register(req.user, req.body);
       res.status(202).json({
@@ -30,15 +29,17 @@ module.exports = {
       res.status(err.status || 400).json({
         message: err.message,
       });
+      next(err)
     }
   },
 
-  async postLogin(req, res) {
+  async postLogin(req, res, next) {
     try {
       const token = await userService.api.v1.userService.login(req.body);
       res.status(200).json({ token });
     } catch (err) {
       res.status(err.status || 400).json({ message: err.message });
+      next(err)
     }
   },
 
@@ -58,13 +59,7 @@ module.exports = {
       no_hp
     }).then(() => {
       res.status(200).json({
-        
-        nama:user.nama,
-        email:user.email,
-        kota:user.kota,
-        alamat:user.alamat,
-        no_hp:user.no_hp
-
+        message: `Success add profile`,
       });
     }).catch((err) => {
       res.status(422).json({
@@ -73,16 +68,4 @@ module.exports = {
       });
     });
   },
-
-  // async postUpdate(req, res) {
-  //   try {
-  //     const admin = adminService.api.v1.adminService.update(
-  //       req.params.username,
-  //       req.body
-  //     );
-  //     res.status(200).json({ message: "success update" });
-  //   } catch (err) {}
-  // },
-
-
 };

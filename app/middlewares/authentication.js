@@ -12,8 +12,8 @@ module.exports = {
                 token,
                 process.env.ACCESS_TOKEN_SECRET
             );
-            return await userRepository.api.v1.userRepository.findByEmail(
-                tokenPayload.email
+            return await userRepository.api.v1.userRepository.findById(
+                tokenPayload.findById
             );
         } catch (err) {
             throw err;
