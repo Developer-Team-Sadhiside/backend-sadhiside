@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const {
     DB_USER = "postgres",
-    DB_PASSWORD = "1234",
+    DB_PASSWORD = "123",
     DB_HOST = "127.0.0.1",
-    DB_NAME = "db_sayajual",
+    DB_NAME = "db_jualsaya",
 } = process.env;
 
 module.exports = {
