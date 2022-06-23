@@ -1,5 +1,6 @@
 const userService = require("../../../services");
 const auth = require("../../../middlewares/authentication")
+const imageKit = require("../../../../library/imageKit")
 
 module.exports = {
   async authorize(req, res, next) {
@@ -44,8 +45,9 @@ module.exports = {
   },
 
   async postProfile(req, res) {
-    const { kota, alamat, no_hp } = req.body;
+    const { kota, alamat, no_hp, foto } = req.body;
     const user = await userService.api.v1.userService.get(req.params.id)
+    const file = req.file;
     if (!user) {
       res.status(404).json({
         status: "FAIL",
@@ -53,19 +55,40 @@ module.exports = {
       });
       return;
     }
-    userService.api.v1.userService.profile(req.params.id, {
-      kota,
-      alamat,
-      no_hp
-    }).then(() => {
-      res.status(200).json({
-        message: `Success add profile`,
-      });
-    }).catch((err) => {
-      res.status(422).json({
-        status: "FAIL",
-        message: err.message,
-      });
-    });
+    if(file){
+      try{
+        const imageFormat = file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg';
+        if(!imageFormat){
+          res.status(400).json({
+            status: "FAIL",
+            message: `Wrong image format`,
+          });
+        }
+        const split = await req.file.originalname.split('.');
+        const ext = await split[split.length - 1];
+        const photo = await imageKit.upload({
+          file: req.file.buffer,
+          fileName: `IMG-${Date.now()}.${ext}`
+        })
+        await userService.api.v1.userService.profile(req.params.id, {
+          kota,
+          alamat,
+          no_hp,
+          foto : photo.url
+        })
+        res.status(200).json({
+          nama: user.nama,
+          email: user.email,
+          kota: user.kota,
+          alamat: user.alamat,
+          no_hp: user.no_hp,
+          foto: user.foto,
+          role: user.role,
+        });
+      }catch (err) {
+          res.status(422)
+          next(err)
+      }
+    }
   },
 };

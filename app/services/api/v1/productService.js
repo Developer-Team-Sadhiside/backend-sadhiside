@@ -4,9 +4,7 @@ module.exports = {
     addProduct(requestBody) {
         return productRepository.api.v1.productRepository.addProduct(requestBody);
     },
-    // getOne(key) {
-    //     return carsRepository.findOne(key);
-    // },
+
     async listAll(args) {
         try {
           const product = await productRepository.api.v1.productRepository.findAll(args);
@@ -20,9 +18,7 @@ module.exports = {
           throw err;
         }
     },
-    // get(id) {
-    //     return carsRepository.find(id);
-    // },
+
     update(id, requestBody) {
         return productRepository.api.v1.productRepository.updateProducts(id, requestBody);
     },
