@@ -26,6 +26,9 @@ module.exports = {
       no_hp: {
         type: Sequelize.INTEGER
       },
+      foto: {
+        type: Sequelize.STRING
+      },
       role: {
         type: Sequelize.ENUM,
         allowNull: false,

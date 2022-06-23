@@ -32,17 +32,17 @@ router.post("/api/v1/addProduct",
     controllers.api.v1.userController.authorize,
     controllers.api.v1.productController.createProducts
 );
-router.get("/api/v1/listAllProducts",
-
-controllers.api.v1.productController.listAllProducts
+router.get("/api/v1/listAllProducts/:id",
+    controllers.api.v1.userController.authorize,
+    controllers.api.v1.productController.listAllProducts
 );
 router.put("/api/v1/product/:id",
-controllers.api.v1.userController.authorize,
+    controllers.api.v1.userController.authorize,
     controllers.api.v1.productController.updateProducts
 );
 
 router.delete("/api/v1/product/:id",
-controllers.api.v1.userController.authorize,
+    controllers.api.v1.userController.authorize,
     controllers.api.v1.productController.deletedProducts
 );
 

@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     kota: DataTypes.STRING,
     alamat: DataTypes.STRING,
     no_hp: DataTypes.INTEGER,
+    foto: DataTypes.STRING,
     role: DataTypes.ENUM({
       values: ["seller", "buyer"],
     }),

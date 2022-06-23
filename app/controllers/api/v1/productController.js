@@ -31,7 +31,7 @@ module.exports = {
 				res.status(200).json({
 					status: "OK",
 					data: {
-						cars: data
+						products: data
 					},
 					detail: {
 						total: count
@@ -45,23 +45,6 @@ module.exports = {
 				});
 		});
 	},
-
-// 	getCarOne(req, res) {
-// 		carsService
-// 			.get(req.params.id)
-// 			.then((post) => {
-// 				res.status(200).json({
-// 					status: "OK",
-// 					data: post,
-// 				});
-// 			})
-// 			.catch((err) => {
-// 				res.status(422).json({
-// 					status: "FAIL",
-// 					message: err.message,
-// 				});
-// 		});
-// 	},
 
 	updateProducts(req, res) {
         productService.api.v1.productService.update(req.params.id, req.body)
