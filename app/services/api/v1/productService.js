@@ -1,8 +1,8 @@
 const productRepository = require("../../../repositories");
 
 module.exports = {
-    addProduct(requestBody) {
-        return productRepository.api.v1.productRepository.addProduct(requestBody);
+    async addProduct(reqBody) {
+        return await productRepository.api.v1.productRepository.addProduct(reqBody);
     },
 
     async listAll(args) {
@@ -19,10 +19,11 @@ module.exports = {
         }
     },
 
-    update(id, requestBody) {
-        return productRepository.api.v1.productRepository.updateProducts(id, requestBody);
+    async update(id, reqBody) {
+        return await productRepository.api.v1.productRepository.updateProducts(id, reqBody);
     },
-    isDeletedProducts(id) {
-        return productRepository.api.v1.productRepository.isDeletedProducts(id);
+
+    async isDeletedProducts(id) {
+      return await productRepository.api.v1.productRepository.isDeletedProducts(id);
     },   
 }

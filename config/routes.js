@@ -34,6 +34,7 @@ router.put(
 
 //Product router
 router.post("/api/v1/addProduct",
+    upload.single("img1"),
     controllers.api.v1.userController.authorize,
     controllers.api.v1.productController.createProducts
 );

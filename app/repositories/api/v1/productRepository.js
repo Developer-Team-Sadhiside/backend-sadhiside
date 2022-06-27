@@ -1,34 +1,31 @@
 const { produk } = require("../../../models");
 
 module.exports = {
-    addProduct(inputData) {
-        return produk.create(inputData);
+    async addProduct(inputData) {
+        return await produk.create(inputData);
     },
     
-    findAll(args) {
-        return produk.findAll(args);
+    async findAll(args) {
+        return await produk.findAll(args);
     },
 
-    getTotalProduct(args) {
-        return produk.count(args);
+    async getTotalProduct(args) {
+        return await produk.count(args);
     },
 
-    updateProducts(id, updateArgs) {
-        return produk.update(updateArgs, {
-          where: {
-            id,
-          },
-        });
+    async updateProducts(id, updateArgs) {
+      return await produk.update(updateArgs, {
+        where: {
+          id,
+        },
+      });
     },
     
-    isDeletedProducts(id) {
-        return produk.destroy({
-          where: {
-            id,
-          },
-        });
-      },
-    
-
-
+    async isDeletedProducts(id) {
+      return await produk.destroy({
+        where: {
+          id,
+        },
+      });
+    },
 }

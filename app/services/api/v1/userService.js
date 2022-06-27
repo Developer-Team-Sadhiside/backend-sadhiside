@@ -76,7 +76,7 @@ module.exports = {
   },
 
   async profile(id, reqBody) {
-    return await userRepository.api.v1.userRepository.addProfil(id, reqBody);
+    return await userRepository.api.v1.userRepository.addProfil(id, {...reqBody, role:"seller"});
   },
 
   async get(id) {

@@ -44,8 +44,8 @@ module.exports = {
     }
   },
 
-  async postProfile(req, res) {
-    const { kota, alamat, no_hp, foto } = req.body;
+  async postProfile(req, res, next) {
+    const { kota, alamat, no_hp} = req.body;
     const user = await userService.api.v1.userService.get(req.params.id)
     const file = req.file;
     if (!user) {
