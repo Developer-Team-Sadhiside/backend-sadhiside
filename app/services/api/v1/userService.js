@@ -45,7 +45,7 @@ module.exports = {
       )
         throw { status: 409, message: "choose another email" };
       reqBody.password = await encryptPassword(reqBody.password);
-      return userRepository.api.v1.userRepository.save({ ...reqBody, role: "buyer" });
+      return userRepository.api.v1.userRepository.save(reqBody);
     } catch (err) {
       throw err;
     }
@@ -76,7 +76,7 @@ module.exports = {
   },
 
   async profile(id, reqBody) {
-    return await userRepository.api.v1.userRepository.addProfil(id, {...reqBody, role:"seller"});
+    return await userRepository.api.v1.userRepository.addProfil(id, reqBody);
   },
 
   async get(id) {

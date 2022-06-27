@@ -19,37 +19,38 @@ router.get("/document", swaggerUi.setup(swaggerDocument));
 
 // user router
 router.post(
-    "/v1/users/register",
-    controllers.api.v1.userController.postRegister
+  "/v1/users/register",
+  controllers.api.v1.userController.postRegister
 );
 router.post(
-    "/v1/users/login", controllers.api.v1.userController.postLogin
+  "/v1/users/login", controllers.api.v1.userController.postLogin
 );
 router.put(
-    "/v1/users/addProfil/:id",
-    upload.single("photo"),
-    controllers.api.v1.userController.authorize,
-    controllers.api.v1.userController.postProfile
+  "/v1/users/addProfil/:id",
+  upload.single("photo"),
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.userController.postProfile
 );
 
 //Product router
 router.post("/api/v1/addProduct",
-    upload.single("img1"),
-    controllers.api.v1.userController.authorize,
-    controllers.api.v1.productController.createProducts
+  upload.any("img"),
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.createProducts
 );
 router.get("/api/v1/listAllProducts/:id",
-    controllers.api.v1.userController.authorize,
-    controllers.api.v1.productController.listAllProducts
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.listAllProducts
 );
 router.put("/api/v1/product/:id",
-    // controllers.api.v1.userController.authorize,
-    controllers.api.v1.productController.updateProducts
+  upload.any("img"),
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.updateProducts
 );
 
 router.delete("/api/v1/product/:id",
-    controllers.api.v1.userController.authorize,
-    controllers.api.v1.productController.deletedProducts
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.deletedProducts
 );
 
 

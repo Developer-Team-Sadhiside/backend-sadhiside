@@ -24,10 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     alamat: DataTypes.STRING,
     no_hp: DataTypes.INTEGER,
     foto: DataTypes.STRING,
-    role: DataTypes.ENUM({
-      values: ["seller", "buyer"],
-    }),
-
+    role: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: ['buyer'],
+    },
   }, {
     sequelize,
     modelName: 'Users',

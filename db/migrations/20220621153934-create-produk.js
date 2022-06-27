@@ -17,14 +17,8 @@ module.exports = {
       harga_produk: {
         type: Sequelize.STRING
       },
-      gambar1: {
-        type: Sequelize.STRING
-      },
-      gambar2: {
-        type: Sequelize.STRING
-      },
-      gambar3: {
-        type: Sequelize.STRING
+      gambar: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
       },
       kategori: {
         type: Sequelize.STRING
