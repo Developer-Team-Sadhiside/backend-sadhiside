@@ -10,11 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Like.belongsTo(models.produk, {
+        foreignKey: 'id_produk'
+      })
+
+      Like.belongsTo(models.Users, {
+        foreignKey: 'id_pembeli'
+      })
     }
   }
   Like.init({
-    isLike: DataTypes.BOOLEAN
+    isLike: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    id_produk: DataTypes.INTEGER,
+    id_pembeli: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Like',

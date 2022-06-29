@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       produk.belongsTo(models.Users, {
         foreignKey: 'id_user',
       })
+
+      produk.hasMany(models.Like,{
+        foreignKey: 'id_produk'
+      })
       // define association here
     }
   }
@@ -22,7 +26,11 @@ module.exports = (sequelize, DataTypes) => {
     harga_produk: DataTypes.STRING,
     gambar: DataTypes.ARRAY(DataTypes.TEXT),
     kategori: DataTypes.STRING,
-    deskripsi: DataTypes.STRING
+    deskripsi: DataTypes.STRING,
+    totalLike: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    }
   }, {
     sequelize,
     modelName: 'produk',

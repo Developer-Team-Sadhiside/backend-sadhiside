@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       Users.hasMany(models.produk, {
         foreignKey: 'id_user',
       })
-   
+
+      Users.hasMany(models.Like, {
+        foreignKey: 'id_pembeli'
+      })
     }
   }
   Users.init({

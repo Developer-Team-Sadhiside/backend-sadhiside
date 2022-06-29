@@ -11,6 +11,12 @@ module.exports = {
       isLike: {
         type: Sequelize.BOOLEAN
       },
+      id_produk: {
+        type: Sequelize.INTEGER
+      },
+      id_pembeli: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
