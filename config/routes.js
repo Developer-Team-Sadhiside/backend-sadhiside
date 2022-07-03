@@ -4,7 +4,6 @@ const router = require('express').Router();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../docs/swagger.json");
 const middlewares = require("../app/middlewares");
-const cloudinary = require("../library/cloudinary");
 
 
 const appRouter = express.Router();
