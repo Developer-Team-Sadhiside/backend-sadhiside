@@ -12,9 +12,10 @@ module.exports = {
                 token,
                 process.env.ACCESS_TOKEN_SECRET
             );
-            return await userRepository.api.v1.userRepository.findById(
-                tokenPayload.findById
+            const user = await userRepository.api.v1.userRepository.findById(
+                tokenPayload.id
             );
+            return[tokenPayload,user]
         } catch (err) {
             throw err;
         }

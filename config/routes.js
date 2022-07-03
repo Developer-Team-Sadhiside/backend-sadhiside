@@ -3,8 +3,7 @@ const express = require("express");
 const router = require('express').Router();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../docs/swagger.json");
-const upload = require("../app/middlewares");
-const uploadOnMemory = require("../app/middlewares/uploudOnMemory");
+const middlewares = require("../app/middlewares");
 const cloudinary = require("../library/cloudinary");
 
 
@@ -27,26 +26,28 @@ router.post(
 router.put(
   "/v1/users/addProfil/:id",
   // uploadOnMemory.single('img'),
-  uploadOnMemory.any(),
-  upload.uploader,
+  middlewares.uploadOnMemory.any(),
+  middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
   controllers.api.v1.userController.postProfile
 );
 
 //Product router
 router.post("/api/v1/addProduct",
-  uploadOnMemory.any(),
-  upload.uploader,
+  middlewares.uploadOnMemory.any(),
+  middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
+  middlewares.credential.checkUserRole,
   controllers.api.v1.productController.createProducts
 );
 router.get("/api/v1/listAllProducts/:id",
   controllers.api.v1.userController.authorize,
+
   controllers.api.v1.productController.listAllProducts
 );
 router.put("/api/v1/product/:id",
-  uploadOnMemory.any(),
-  upload.uploader,
+  middlewares.uploadOnMemory.any(),
+  middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
   controllers.api.v1.productController.updateProducts
 );

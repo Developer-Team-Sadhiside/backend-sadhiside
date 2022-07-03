@@ -1,7 +1,8 @@
 const multer = require('multer');
 const imageKit = require("../../library/imageKit")
-
-  const upload = async (req,res,next) =>{
+  
+module.exports = {
+  async upload (req,res,next){
     const files = req.files;
     const imgBanyak = [];
     for (let i = 0; i < files.length; i++) {
@@ -21,5 +22,5 @@ const imageKit = require("../../library/imageKit")
     req.image = imgBanyak;
     next();
    }
+}
 
-   module.exports = upload;

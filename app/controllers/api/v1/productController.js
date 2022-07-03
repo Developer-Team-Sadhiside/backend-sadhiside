@@ -6,15 +6,15 @@ const {Users} = require("../../../models")
 
 module.exports = {
   async createProducts(req, res) {
+    console.log(req.user.id)
     const {
-      id_user,
       nama_produk,
       harga_produk,
       kategori,
       deskripsi
     } = req.body;
 	  await	productService.api.v1.productService.addProduct({
-      id_user,
+      id_user : req.user.id,
       nama_produk,
       harga_produk,
       gambar : req.image,

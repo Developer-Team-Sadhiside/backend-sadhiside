@@ -8,9 +8,9 @@ module.exports = {
       if (req.headers.authorization === undefined) {
         throw new Error("Must register account and login first!")
       }
-      req.user = await auth.authorize(
-        req.headers.authorization
-      );
+      const user = await auth.authorize(req.headers.authorization);
+      req.user = user[1]
+      req.role = user[0].role
       next();
     } catch (err) {
       res.status(err.status || 400).json({

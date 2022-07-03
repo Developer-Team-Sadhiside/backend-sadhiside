@@ -53,7 +53,6 @@ module.exports = {
 
   async login(reqBody) {
     try {
-      console.log(reqBody.email)
       if (!reqBody.email)
         throw { status: 422, message: "email field cannot empty" };
       if (!reqBody.password)
@@ -67,6 +66,7 @@ module.exports = {
         id: user.id,
         nama: user.nama,
         email: user.email,
+        role: user.role,
       }, process.env.ACCESS_TOKEN_SECRET || 'Token', {
         expiresIn: '1h'
       });
