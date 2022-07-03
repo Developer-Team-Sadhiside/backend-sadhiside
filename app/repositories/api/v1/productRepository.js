@@ -1,20 +1,20 @@
-const { produk } = require("../../../models");
+const { Products } = require("../../../models");
 
 module.exports = {
     async addProduct(inputData) {
-        return await produk.create(inputData);
+        return await Products.create(inputData);
     },
     
     async findAll(args) {
-        return await produk.findAll(args);
+        return await Products.findAll(args);
     },
 
     async getTotalProduct(args) {
-        return await produk.count(args);
+        return await Products.count(args);
     },
 
     async updateProducts(id, updateArgs) {
-      return await produk.update(updateArgs, {
+      return await Products.update(updateArgs, {
         where: {
           id,
         },
@@ -22,7 +22,7 @@ module.exports = {
     },
     
     async isDeletedProducts(id) {
-      return await produk.destroy({
+      return await Products.destroy({
         where: {
           id,
         },

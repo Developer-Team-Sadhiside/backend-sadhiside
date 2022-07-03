@@ -1,5 +1,5 @@
 const userService = require("../../../services");
-const {Users,produk,Like} = require("../../../models");
+const {Users,Products,Like} = require("../../../models");
 
 
 module.exports = {
@@ -53,7 +53,7 @@ module.exports = {
             })
 
             const likesCount = getLikes.count;
-            await produk.update({
+            await Products.update({
                 totalLike: likesCount
             }, {
                 where: {

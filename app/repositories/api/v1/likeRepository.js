@@ -1,8 +1,8 @@
-const {produk} = require("../../../models")
+const {Products} = require("../../../models")
 
 module.exports = {
     async findById(id){
-        return await produk.findByPk(id)
+        return await Products.findByPk(id)
     },
 
     // async findUser(id_produk,id_sender){

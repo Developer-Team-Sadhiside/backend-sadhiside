@@ -10,7 +10,8 @@ module.exports = {
       nama_produk,
       harga_produk,
       kategori,
-      deskripsi
+      deskripsi,
+      status
     } = req.body;
 	  await	productService.api.v1.productService.addProduct({
       id_user : req.user.id,
@@ -18,7 +19,8 @@ module.exports = {
       harga_produk,
       gambar : req.image,
       kategori,
-      deskripsi
+      deskripsi,
+      status
     })
 	  .then((createdproduct) => {
 			res.status(201).json({
@@ -32,7 +34,7 @@ module.exports = {
 			});
 		});
   },
-  
+
   async	listAllProducts(req, res) {
     productService.api.v1.productService.listAll({
       include: [
@@ -65,13 +67,15 @@ module.exports = {
       harga_produk,
       kategori,
       deskripsi,
+      status,
     } = req.body
     await productService.api.v1.productService.update(req.params.id, {
       nama_produk,
       harga_produk,
       gambar : req.image,
       kategori,
-      deskripsi
+      deskripsi,
+      status,
     })
     .then(() => {
       res.status(200).json({
