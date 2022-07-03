@@ -23,7 +23,7 @@ router.post(
   "/v1/users/login", controllers.api.v1.userController.postLogin
 );
 router.put(
-  "/v1/users/addProfil/:id",
+  "/v1/users/addProfil",
   // uploadOnMemory.single('img'),
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,

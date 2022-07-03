@@ -47,15 +47,7 @@ module.exports = {
   async postProfile(req, res) {
     console.log(req.image)
     const { kota, alamat, no_hp} = req.body;
-    const user = await userService.api.v1.userService.get(req.params.id)
-    if (!user) {
-      res.status(404).json({
-        status: "FAIL",
-        message: `user not found!`,
-      });
-      return;
-    }
-      await userService.api.v1.userService.profile(req.params.id, {
+      await userService.api.v1.userService.profile(req.user.id, {
         kota,
         alamat,
         no_hp,
