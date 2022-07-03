@@ -28,6 +28,7 @@ router.put(
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.userController.postProfile
 );
 
@@ -36,28 +37,32 @@ router.post("/api/v1/addProduct",
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
-  middlewares.credential.checkUserRole,
+  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.createProducts
 );
-router.get("/api/v1/listAllProducts/:id",
+router.get("/api/v1/listAllProducts",
   controllers.api.v1.userController.authorize,
-
+  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.listAllProducts
 );
 router.put("/api/v1/product/:id",
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.updateProducts
 );
 
 router.delete("/api/v1/product/:id",
   controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.deletedProducts
 );
 
 router.post("/api/v1/likes/:id",
   controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.likeController.likeProduct
 );
 

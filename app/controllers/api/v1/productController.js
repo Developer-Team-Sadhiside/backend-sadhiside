@@ -6,7 +6,6 @@ const {Users} = require("../../../models")
 
 module.exports = {
   async createProducts(req, res) {
-    console.log(req.user.id)
     const {
       nama_produk,
       harga_produk,
@@ -33,9 +32,8 @@ module.exports = {
 			});
 		});
   },
-
+  
   async	listAllProducts(req, res) {
-    const user = await userService.api.v1.userService.get(req.params.id)
     productService.api.v1.productService.listAll({
       include: [
         {
@@ -47,7 +45,6 @@ module.exports = {
 			.then(({data,count}) => {
 				res.status(200).json({
 					status: "OK",
-          pemilik: user.nama, 
 					produk: data,
 					detail: {
 						total: count
