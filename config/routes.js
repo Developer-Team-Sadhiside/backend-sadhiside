@@ -14,16 +14,14 @@ const apiRouter = express.Router();
 router.use("/document", swaggerUi.serve);
 router.get("/document", swaggerUi.setup(swaggerDocument));
 
-// user router
-router.post(
-  "/v1/users/register",
+// User router
+router.post("/v1/users/register",
   controllers.api.v1.userController.postRegister
 );
-router.post(
-  "/v1/users/login", controllers.api.v1.userController.postLogin
+router.post("/v1/users/login", 
+  controllers.api.v1.userController.postLogin
 );
-router.put(
-  "/v1/users/addProfil",
+router.put("/v1/users/addProfil",
   // uploadOnMemory.single('img'),
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
@@ -32,7 +30,7 @@ router.put(
   controllers.api.v1.userController.postProfile
 );
 
-//Product router
+// Product router
 router.post("/api/v1/addProduct",
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
@@ -52,18 +50,24 @@ router.put("/api/v1/product/:id",
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.updateProducts
 );
-
 router.delete("/api/v1/product/:id",
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.deletedProducts
 );
-
 router.post("/api/v1/likes/:id",
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.likeController.likeProduct
+);
+
+// Buy router
+router.post("/api/v1/buy/product/:id",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.buyController.buyProduct
 );
 
 appRouter.use(apiRouter);

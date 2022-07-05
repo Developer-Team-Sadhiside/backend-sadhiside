@@ -10,12 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Products.belongsTo(models.Users, {
+      Products.belongsTo(models.Users,{
         foreignKey: 'id_user',
       })
 
       Products.hasMany(models.Like,{
         foreignKey: 'id_produk'
+      })
+
+      Products.hasOne(models.Purchase,{
+        foreignKey: 'id_pembeli'
       })
       // define association here
     }
@@ -23,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Products.init({
     id_user:DataTypes.INTEGER,
     nama_produk: DataTypes.STRING,
-    harga_produk: DataTypes.STRING,
+    harga_produk: DataTypes.INTEGER,
     gambar: DataTypes.ARRAY(DataTypes.TEXT),
     kategori: DataTypes.STRING,
     deskripsi: DataTypes.STRING,
@@ -31,7 +35,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    status: DataTypes.BOOLEAN,
+    status: DataTypes.ENUM({
+      values: ["tersedia", "pending", "tersedia"],
+      defaultValue: "tersedia",
+    }),
   }, {
     sequelize,
     modelName: 'Products',

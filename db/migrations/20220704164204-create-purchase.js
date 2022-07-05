@@ -1,37 +1,25 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Products', {
+    await queryInterface.createTable('Purchases', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_user:{ 
+      id_produk: {
         type: Sequelize.INTEGER
       },
-      nama_produk: {
-        type: Sequelize.STRING
-      },
-      harga_produk: {
+      id_pembeli: {
         type: Sequelize.INTEGER
       },
-      gambar: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
+      tanggal_pembelian: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
-      kategori: {
-        type: Sequelize.STRING
-      },
-      deskripsi: {
-        type: Sequelize.STRING
-      },
-      totalLike:{
+      harga_tawar: {
         type: Sequelize.INTEGER
-      },
-      status: {
-        type: Sequelize.ENUM,
-        values: ["tersedia", "pending", "terjual"],
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Products');
+    await queryInterface.dropTable('Purchases');
   }
 };

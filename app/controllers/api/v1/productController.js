@@ -11,7 +11,6 @@ module.exports = {
       harga_produk,
       kategori,
       deskripsi,
-      status
     } = req.body;
 	  await	productService.api.v1.productService.addProduct({
       id_user : req.user.id,
@@ -20,7 +19,7 @@ module.exports = {
       gambar : req.image,
       kategori,
       deskripsi,
-      status
+      status : "tersedia"
     })
 	  .then((createdproduct) => {
 			res.status(201).json({
@@ -36,14 +35,7 @@ module.exports = {
   },
 
   async	listAllProducts(req, res) {
-    productService.api.v1.productService.listAll({
-      include: [
-        {
-          model: Users,
-          attributes: ["nama"],
-        },
-      ],
-			})
+    productService.api.v1.productService.listAll()
 			.then(({data,count}) => {
 				res.status(200).json({
 					status: "OK",
@@ -61,13 +53,14 @@ module.exports = {
 		});
 	},
 
+
+
 	async updateProducts(req, res) {
     const {
       nama_produk,
       harga_produk,
       kategori,
       deskripsi,
-      status,
     } = req.body
     await productService.api.v1.productService.update(req.params.id, {
       nama_produk,
@@ -75,7 +68,6 @@ module.exports = {
       gambar : req.image,
       kategori,
       deskripsi,
-      status,
     })
     .then(() => {
       res.status(200).json({
