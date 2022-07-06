@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       harga_produk: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       gambar: {
         type: Sequelize.ARRAY(Sequelize.TEXT)

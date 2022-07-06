@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Products.init({
     id_user:DataTypes.INTEGER,
     nama_produk: DataTypes.STRING,
-    harga_produk: DataTypes.INTEGER,
+    harga_produk: DataTypes.FLOAT,
     gambar: DataTypes.ARRAY(DataTypes.TEXT),
     kategori: DataTypes.STRING,
     deskripsi: DataTypes.STRING,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
     },
     status: DataTypes.ENUM({
-      values: ["tersedia", "pending", "tersedia"],
+      values: ["tersedia", "pending", "terjual"],
       defaultValue: "tersedia",
     }),
   }, {

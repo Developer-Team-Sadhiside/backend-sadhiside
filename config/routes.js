@@ -40,8 +40,13 @@ router.post("/api/v1/addProduct",
 );
 router.get("/api/v1/listAllProducts",
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.listAllProducts
+);
+router.get("/api/v1/listProducts/:kategori",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  controllers.api.v1.productController.listProductByCategories
 );
 router.put("/api/v1/product/:id",
   middlewares.uploadOnMemory.any(),

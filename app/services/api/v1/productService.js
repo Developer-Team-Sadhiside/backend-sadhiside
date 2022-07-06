@@ -19,6 +19,20 @@ module.exports = {
         }
     },
 
+    async getByCategory(kategori) {
+      try {
+        const product = await productRepository.api.v1.productRepository.findByCategory(kategori);
+        const productCount = await productRepository.api.v1.productRepository.getTotalProductByCategory(kategori);
+  
+        return {
+          data:product,
+          count: productCount,
+        };
+      } catch (err) {
+        throw err;
+      }
+  },
+
     async update(id, reqBody) {
         return await productRepository.api.v1.productRepository.updateProducts(id, reqBody);
     },

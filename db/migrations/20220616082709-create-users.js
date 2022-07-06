@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       no_hp: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       foto: {
         type: Sequelize.STRING
