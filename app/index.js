@@ -8,6 +8,8 @@ const cors = require("cors");
 const publicDir = path.join(__dirname, "../public");
 const app = express();
 
+app.use(cors())
+
 /** Install request logger */
 app.use(morgan("dev"));
 
@@ -19,7 +21,5 @@ app.use(express.static(publicDir));
 
 /** Install Router */
 app.use(router);
-
-app.use(cors())
 
 module.exports = app;
