@@ -18,11 +18,11 @@ module.exports = {
       status : "tersedia"
     })
 	  .then((createdproduct) => {
-			res.status(201).json({
-				status: "Success",	
-				data: createdproduct,
-			});
-		}).catch((err) => {
+		res.status(201).json({
+			status: "Success",	
+			data: createdproduct,
+		});
+	}).catch((err) => {
 			res.status(400).json({
 				status: "FAIL",
 				message: err.message,
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   async	listAllProducts(req, res) {
-    productService.api.v1.productService.listAll()
+    await productService.api.v1.productService.listAll()
 			.then(({data,count}) => {
 				res.status(200).json({
 					status: "OK",
@@ -50,7 +50,7 @@ module.exports = {
 	},
 
   async	listProductByCategories(req, res) {
-    productService.api.v1.productService.getByCategory(req.params.kategori)
+    await productService.api.v1.productService.getByCategory(req.params.kategori)
 			.then(({data,count}) => {
 				res.status(200).json({
 					status: "OK",
@@ -69,7 +69,7 @@ module.exports = {
 	},
 
   async	listProductsUsers(req, res) {
-    productService.api.v1.productService.getProductsUsers(req.user.id)
+    await productService.api.v1.productService.getProductsUsers(req.user.id)
 			.then(({data,count}) => {
 				res.status(200).json({
 					status: "OK",
@@ -115,7 +115,7 @@ module.exports = {
   },
 
 	async deletedProducts(req, res) {
-		productService.api.v1.productService.isDeletedProducts(req.params.id)
+		await productService.api.v1.productService.isDeletedProducts(req.params.id)
       .then(() => {
         res.status(200).json({
 			status: "Success",

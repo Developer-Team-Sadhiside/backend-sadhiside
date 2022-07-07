@@ -38,9 +38,9 @@ module.exports = {
     },
 
     async getTotalProductsUsers(id) {
-      return await Products.count(id,{
+      return await Products.count({
         where : {
-          id_user : req.user.id
+          id_user : id
         }
       })
     },
