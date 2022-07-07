@@ -29,6 +29,22 @@ module.exports = {
       })
     },
 
+    async findProductsUsers(id)  {
+      return await Products.findAll({
+        where:{
+          id_user : id
+        }
+      });
+    },
+
+    async getTotalProductsUsers(id) {
+      return await Products.count(id,{
+        where : {
+          id_user : req.user.id
+        }
+      })
+    },
+
     async updateProducts(id, updateArgs) {
       return await Products.update(updateArgs, {
         where: {

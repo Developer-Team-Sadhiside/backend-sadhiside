@@ -48,6 +48,11 @@ router.get("/api/v1/listProducts/:kategori",
   middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.listProductByCategories
 );
+router.get("/api/v1/listProducts/seller",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.productController.listProductsUsers
+);
 router.put("/api/v1/product/:id",
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,

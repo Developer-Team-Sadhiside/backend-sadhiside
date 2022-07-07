@@ -68,6 +68,25 @@ module.exports = {
 		});
 	},
 
+  async	listProductsUsers(req, res) {
+    productService.api.v1.productService.getProductsUsers(req.user.id)
+			.then(({data,count}) => {
+				res.status(200).json({
+					status: "OK",
+					produk: data,
+					detail: {
+						total: count
+					},
+				});
+			})
+			.catch((err) => {
+				res.status(400).json({
+					status: "FAIL",
+					message: err.message,
+				});
+		});
+	},
+
 	async updateProducts(req, res) {
     const {
       nama_produk,
