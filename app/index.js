@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const router = require("../config/routes");
+const cors = require("cors");
 
 const publicDir = path.join(__dirname, "../public");
 const app = express();
@@ -18,5 +19,7 @@ app.use(express.static(publicDir));
 
 /** Install Router */
 app.use(router);
+
+app.use(cors())
 
 module.exports = app;
