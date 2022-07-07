@@ -15,13 +15,13 @@ router.use("/document", swaggerUi.serve);
 router.get("/document", swaggerUi.setup(swaggerDocument));
 
 // User router
-router.post("api/v1/users/register",
+router.post("/api/v1/users/register",
   controllers.api.v1.userController.postRegister
 );
-router.post("api/v1/users/login", 
+router.post("/api/v1/users/login", 
   controllers.api.v1.userController.postLogin
 );
-router.put("api/v1/users/addProfil",
+router.put("/api/v1/users/addProfil",
   // uploadOnMemory.single('img'), you can use this to up 1 image only
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
@@ -52,6 +52,11 @@ router.get("/api/v1/listProducts/seller",
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.listProductsUsers
+);
+router.get("/api/v1/listProducts/seller/interested",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.productController.sortingProductsUser
 );
 router.put("/api/v1/product/:id",
   middlewares.uploadOnMemory.any(),

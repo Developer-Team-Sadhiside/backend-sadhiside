@@ -47,6 +47,18 @@ module.exports = {
       }
     },
 
+    async sortingProducts(id) {
+      try{
+      const product = await productRepository.api.v1.productRepository.findProducts(id);
+      return {
+        data:product,
+        
+      };
+    } catch (err) {
+      throw err;
+    }
+    },
+
     async update(id, reqBody) {
         return await productRepository.api.v1.productRepository.updateProducts(id, reqBody);
     },
