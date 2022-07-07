@@ -53,8 +53,6 @@ module.exports = {
 		});
 	},
 
-
-
 	async updateProducts(req, res) {
     const {
       nama_produk,
