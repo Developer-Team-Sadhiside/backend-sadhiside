@@ -6,24 +6,33 @@ module.exports = {
     },
 
     async listAll(args) {
-        try {
-          const product = await productRepository.api.v1.productRepository.findAll(args);
-          const productCount = await productRepository.api.v1.productRepository.getTotalProduct(args);
-    
-          return {
-            data:product,
-            count: productCount,
+      try {
+        const product = await productRepository.api.v1.productRepository.findAll(args);
+        const productCount = await productRepository.api.v1.productRepository.getTotalProduct(args);
+        return {
+          data:product,
+          count: productCount,
           };
-        } catch (err) {
-          throw err;
-        }
+      } catch (err){
+        throw err;
+      }
+    },
+
+    async findProduct(id) {
+      try {
+        const product = await productRepository.api.v1.productRepository.getProduct(id);
+        return {
+          data:product,
+        };
+      } catch (err) {
+        throw err;
+      }
     },
 
     async getByCategory(kategori) {
       try {
         const product = await productRepository.api.v1.productRepository.findByCategory(kategori);
         const productCount = await productRepository.api.v1.productRepository.getTotalProductByCategory(kategori);
-  
         return {
           data:product,
           count: productCount,
@@ -37,7 +46,6 @@ module.exports = {
       try {
         const product = await productRepository.api.v1.productRepository.findProductsUsers(id);
         const productCount = await productRepository.api.v1.productRepository.getTotalProductsUsers(id);
-  
         return {
           data:product,
           count: productCount,
@@ -52,7 +60,17 @@ module.exports = {
       const product = await productRepository.api.v1.productRepository.findProducts(id);
       return {
         data:product,
-        
+      };
+    } catch (err) {
+      throw err;
+    }
+    },
+
+    async listProductsSold(id) {
+      try{
+      const product = await productRepository.api.v1.productRepository.findProductsSold(id);
+      return {
+        data:product,
       };
     } catch (err) {
       throw err;
@@ -60,7 +78,7 @@ module.exports = {
     },
 
     async update(id, reqBody) {
-        return await productRepository.api.v1.productRepository.updateProducts(id, reqBody);
+      return await productRepository.api.v1.productRepository.updateProducts(id, reqBody);
     },
 
     async isDeletedProducts(id) {

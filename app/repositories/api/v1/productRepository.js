@@ -9,6 +9,14 @@ module.exports = {
     return await Products.findAll(args);
   },
 
+  async getProduct(id) {
+    return await Products.findOne({
+      where: {
+        id: id,
+      },
+    });
+  },
+
   async getTotalProduct(args) {
     return await Products.count(args);
   },
@@ -53,6 +61,15 @@ module.exports = {
       order: [
         ["totalLike","DESC"]
       ],
+    });
+  },
+
+  async findProductsSold(id) {
+    return await Products.findAll({
+      where: {
+        id_user: id,
+        status: "terjual"
+      },
     });
   },
 

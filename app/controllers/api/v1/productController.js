@@ -49,6 +49,22 @@ module.exports = {
 		});
 	},
 
+  async	findOneProduct(req, res) {
+    await productService.api.v1.productService.findProduct(req.params.id)
+			.then(({data}) => {
+				res.status(200).json({
+					status: "OK",
+					produk: data,
+				});
+			})
+			.catch((err) => {
+				res.status(400).json({
+					status: "FAIL",
+					message: err.message,
+				});
+		});
+	},
+
   async	listProductByCategories(req, res) {
     await productService.api.v1.productService.getByCategory(req.params.kategori)
 			.then(({data,count}) => {
@@ -103,6 +119,22 @@ module.exports = {
 		});
 	},
 	
+  async	listProductsUserSold(req, res) {
+    await productService.api.v1.productService.listProductsSold(req.user.id)
+			.then((data) => {
+				res.status(200).json({
+					status: "OK",
+					produk: data,
+				});
+			})
+			.catch((err) => {
+				res.status(400).json({
+					status: "FAIL",
+					message: err.message,
+				});
+		});
+	},
+
 	async updateProducts(req, res) {
     const {
       nama_produk,

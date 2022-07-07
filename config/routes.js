@@ -43,6 +43,11 @@ router.get("/api/v1/listAllProducts",
   middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.listAllProducts
 );
+router.get("/api/v1/getOneProduct/:id",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  controllers.api.v1.productController.findOneProduct
+);
 router.get("/api/v1/listProducts/category/:kategori",
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
@@ -57,6 +62,11 @@ router.get("/api/v1/listProducts/seller/interested",
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.sortingProductsUser
+);
+router.get("/api/v1/listProducts/seller/sold",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.productController.listProductsUserSold
 );
 router.put("/api/v1/product/:id",
   middlewares.uploadOnMemory.any(),
