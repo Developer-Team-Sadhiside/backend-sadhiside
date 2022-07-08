@@ -13,14 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       Products.belongsTo(models.Users,{
         foreignKey: 'id_user',
       })
-
-      Products.hasMany(models.Like,{
-        foreignKey: 'id_produk'
-      })
-
-      Products.hasOne(models.Purchase,{
-        foreignKey: 'id_pembeli'
-      })
       // define association here
     }
   }
