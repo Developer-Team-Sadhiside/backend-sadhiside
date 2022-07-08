@@ -1,0 +1,367 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Secondhand by Sadhiside Team",
+        "description": "OpenAPI for Secondhand by Sadhiside Team",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Shadiside Project",
+            "url": "https://github.com/Developer-Team-Sadhiside"
+        },
+        "license": {
+            "name": "APACHE 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "servers": [
+        {
+            "description": "Secondhand",
+            "url": "http://localhost:8000/v1"
+        }
+    ],
+    "paths": {
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "security": [
+                    {
+                        "userAuth": []
+                    }
+                ],
+                "summary": "Register user",
+                "description": "Register user with different role (auto have buyer role when regis), you can give role seller for user when you want make a shop",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nama": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 6,
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "kota": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "alamat": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "no_hp": {
+                                        "type": "integer",
+                                        "required": [
+                                            "true"
+                                        ]
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "enum": [
+                                            "buyer",
+                                            "seller"
+                                        ]
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "user": {
+                                    "description": "Register user and role buyer was fill in",
+                                    "value": {
+                                        "nama": "rizki",
+                                        "email": "rizki@gmail.com",
+                                        "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success register user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "nama": {
+                                            "type": "string",
+                                            "required": [
+                                                "true"
+                                            ]
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "required": [
+                                                "true"
+                                            ]
+                                        },
+                                        "role": {
+                                            "type": "string",
+                                            "required": [
+                                                "true"
+                                            ],
+                                            "enum": [
+                                                "buyer",
+                                                "seller"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "buyer": {
+                                        "description": "Success register user with name rizki, email rizki@gmail.com and role as buyer",
+                                        "value": {
+                                            "nama": "rizki",
+                                            "email": "rizki@gmail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict register user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "name conflict": {
+                                        "description": "Name conflict because have already use",
+                                        "value": {
+                                            "message": "choose another name"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity register user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "name undefined": {
+                                        "description": "name does not initialize",
+                                        "value": {
+                                            "message": "name cannot empty"
+                                        }
+                                    },
+                                    "email undefined": {
+                                        "description": "email does not initialize",
+                                        "value": {
+                                            "message": "email cannot empty"
+                                        }
+                                    },
+                                    "password undefined": {
+                                        "description": "password does not initialize",
+                                        "value": {
+                                            "message": "password cannot empty"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "security": [
+                    {
+                        "userAuth": []
+                    }
+                ],
+                "summary": "Login user",
+                "description": "Login user, in here role buyer was fill in automatic ",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "minLength": 2
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "minLength": 3
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "login as rizki's email": {
+                                    "description": "Login with rizki's email",
+                                    "value": {
+                                        "email": "rizki@gmail.com",
+                                        "password": "123456"
+                                    }
+                                },
+                                "login as chancan's email": {
+                                    "description": "Login with chancan's email",
+                                    "value": {
+                                        "email": "chancan@gmail.com",
+                                        "password": "123456"
+                                    }
+                                },
+                                "login as dendy's email": {
+                                    "description": "Login with dendy's email",
+                                    "value": {
+                                        "email": "dendy@gmail.com",
+                                        "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success login user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "success login": {
+                                        "value": {
+                                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1c2RlIiwiZnVsbG5hbWUiOiJCYWd1cyBTdXByYXB0YSIsImlhdCI6MTY1MjQ1Mzg4M30.OPmGtLgbz6i4S78ly-u6Rz0URTf3ZrB2gpfjbN-gq2k"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized login user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "unauthorized": {
+                                        "value": {
+                                            "message": "name or password wrong"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity login user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "email undefined": {
+                                        "description": "email does not initialize",
+                                        "value": {
+                                            "message": "email cannot empty"
+                                        }
+                                    },
+                                    "password undefined": {
+                                        "description": "password does not initialize",
+                                        "value": {
+                                            "message": "password cannot empty"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "components": {
+            "securitySchemes": {
+                "userAuth": {
+                    "description": "Auth for user Binar Car Rental",
+                    "type": "http",
+                    "schema": "bearer",
+                    "bearerFormat": "JWT"
+                }
+            },
+            "parameters": {
+                "authUser": {
+                    "name": "token",
+                    "in": "header",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

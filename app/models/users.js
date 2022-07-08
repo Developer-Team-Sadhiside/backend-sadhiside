@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Users.hasMany(models.Products, {
+        foreignKey: 'id_user',
+      })
     }
   }
   Users.init({
@@ -20,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     kota: DataTypes.STRING,
     alamat: DataTypes.STRING,
     no_hp: DataTypes.INTEGER,
-    role: DataTypes.ENUM({
-      values: ["seller", "buyer"],
-    }),
-
+    foto: DataTypes.STRING,
+    role: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: ['buyer'],
+    },
   }, {
     sequelize,
     modelName: 'Users',
