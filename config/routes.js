@@ -65,6 +65,7 @@ router.delete("/api/v1/product/:id",
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.deletedProducts
 );
+
 router.post("/api/v1/likes/:id",
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
@@ -79,6 +80,7 @@ router.post("/api/v1/buy/product/:id",
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.buyController.buyProduct
 );
+
 
 appRouter.use(apiRouter);
 
