@@ -66,6 +66,14 @@ router.delete("/api/v1/product/:id",
   controllers.api.v1.productController.deletedProducts
 );
 
+router.post("/api/v1/likes/:id",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.likeController.likeProduct
+);
+
+
 appRouter.use(apiRouter);
 
 module.exports = router;
