@@ -66,7 +66,6 @@ router.delete("/api/v1/product/:id",
   controllers.api.v1.productController.deletedProducts
 );
 
-
 appRouter.use(apiRouter);
 
 module.exports = router;
