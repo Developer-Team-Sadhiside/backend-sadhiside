@@ -13,6 +13,38 @@ module.exports = {
         return await Products.count(args);
     },
 
+    async getTotalProductByCategory(kategori) {
+      return await Products.count({
+        where : {
+          kategori: kategori
+        }
+      })
+    },
+
+    async findByCategory(kategori)  {
+      return await Products.findAll({
+        where : {
+          kategori: kategori
+        }
+      })
+    },
+
+    async findProductsUsers(id)  {
+      return await Products.findAll({
+        where:{
+          id_user : id
+        }
+      });
+    },
+
+    async getTotalProductsUsers(id) {
+      return await Products.count({
+        where : {
+          id_user : id
+        }
+      })
+    },
+
     async updateProducts(id, updateArgs) {
       return await Products.update(updateArgs, {
         where: {
