@@ -31,6 +31,9 @@ router.put("/api/v1/users/addProfil",
 );
 
 // Product router
+router.get("/api/v1/listAllProducts/Unregister",
+  controllers.api.v1.productController.listAllProducts
+);
 router.post("/api/v1/addProduct",
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
