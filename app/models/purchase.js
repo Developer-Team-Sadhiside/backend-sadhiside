@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       Purchase.belongsTo(models.Users, {
         foreignKey: 'id_pembeli'
       })
+
+      Purchase.hasOne(models.History, {
+        foreignKey: 'id_pembelian'
+      })
     }
   }
   Purchase.init({

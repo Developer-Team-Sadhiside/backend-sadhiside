@@ -20,10 +20,7 @@ module.exports = {
 
     async findProduct(id) {
       try {
-        const product = await productRepository.api.v1.productRepository.getProduct(id);
-        return {
-          data:product,
-        };
+        return await productRepository.api.v1.productRepository.getProduct(id)
       } catch (err) {
         throw err;
       }

@@ -61,7 +61,7 @@ router.get("/api/v1/listProducts/seller",
 router.get("/api/v1/listProducts/seller/interested",
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.sortingProductsUser
+  controllers.api.v1.productController.listProductsUsers
 );
 router.get("/api/v1/listProducts/seller/sold",
   controllers.api.v1.userController.authorize,
@@ -93,6 +93,13 @@ router.post("/api/v1/buy/product/:id",
   middlewares.ImBuyer.checkUserRole,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.buyController.buyProduct
+);
+
+//History router
+router.get("/api/v1/history/seller",
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.historyController.getProductBid,
 );
 
 appRouter.use(apiRouter);
