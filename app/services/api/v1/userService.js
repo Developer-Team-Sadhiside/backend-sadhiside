@@ -14,15 +14,6 @@ function encryptPassword(password) {
   });
 }
 
-function checkPassword(password, encryptedPassword) {
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, encryptedPassword, (err, encryptedPassword) => {
-      if (err) reject(err);
-      resolve(encryptedPassword);
-    });
-  });
-}
-
 function createToken(payload) {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
 }
@@ -50,18 +41,24 @@ module.exports = {
       throw err;
     }
   },
-
   async login(reqBody) {
     try {
-      if (!reqBody.email)
-        throw { status: 422, message: "email field cannot empty" };
-      if (!reqBody.password)
-        throw { status: 422, message: "password field cannot empty" };
       const user = await userRepository.api.v1.userRepository.findByEmail(reqBody.email);
-      if (!user)
+      let comparePassword = '' 
+      if(user != null){
+      comparePassword = await bcrypt.compareSync(reqBody.password, user.password)
+      }else{
+        comparePassword = false
+      }
+      if (!reqBody.email){
+        throw { status: 422, message: "email field cannot empty" };
+      }else if (!reqBody.password || reqBody.password === 'password'){
+        throw { status: 422, message: "password field cannot empty" };
+      }else if (user == null){
         throw { status: 401, message: "email or password wrong" };
-      if (!checkPassword(reqBody.password, user.password))
-        throw { status: 401, message: "name or password wrong" };
+      }else if (!comparePassword){
+        throw { status: 401, message: "email or password wrong" };
+      }else{
       return createToken({
         id: user.id,
         nama: user.nama,
@@ -70,6 +67,7 @@ module.exports = {
       }, process.env.ACCESS_TOKEN_SECRET || 'Token', {
         expiresIn: '1h'
       });
+     }
     } catch (err) {
       throw err;
     }
