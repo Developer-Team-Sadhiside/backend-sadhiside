@@ -20,7 +20,7 @@ describe('PUT /api/v1/users/addProfil', () => {
         jwtToken = res.body.token;
       });
   });
-it('add profile user success with 201 as status code', async () => {
+it('success create product with 201 as status code', async () => {
     return await request(app)
       .put('/api/v1/users/addProfil')
       .set('authorization', `Bearer ${jwtToken}`)
