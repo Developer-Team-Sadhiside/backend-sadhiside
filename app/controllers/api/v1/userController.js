@@ -1,6 +1,5 @@
 const userService = require("../../../services");
 const auth = require("../../../middlewares/authentication")
-const imageKit = require("../../../../library/imageKit")
 
 module.exports = {
   async authorize(req, res, next) {
@@ -71,5 +70,20 @@ module.exports = {
           message: err.message
         });
       });
-    },
-  };
+  },
+
+  async whoAmI(req,res){
+    await userService.api.v1.userService.getUser(req.user.id)
+    .then((user) => {
+      res.status(200).json({
+        user,
+      });
+    })
+    .catch((err) => {
+      res.status(400).json({
+        status: "FAIL",
+        message: err.message,
+      });
+  });
+  }
+};

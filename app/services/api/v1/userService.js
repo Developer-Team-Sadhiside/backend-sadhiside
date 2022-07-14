@@ -80,4 +80,15 @@ module.exports = {
   async get(id) {
     return await userRepository.api.v1.userRepository.findById(id);
   },
+
+  async getUser(id) {
+    try{
+      const userData = await userRepository.api.v1.userRepository.findUser(id);
+      return{
+        user: userData
+      }
+    }catch(err){
+      throw err;
+    }
+  }
 };

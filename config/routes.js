@@ -29,6 +29,10 @@ router.put("/api/v1/users/addProfil",
   middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.userController.postProfile
 );
+router.get("/api/v1/users/whoAmI",
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.userController.whoAmI
+)
 
 // Product router
 router.get("/api/v1/listAllProducts/Unregister",

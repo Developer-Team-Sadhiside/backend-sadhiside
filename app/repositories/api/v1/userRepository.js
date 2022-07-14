@@ -17,8 +17,17 @@ module.exports = {
     return await Users.findByPk(id);
   },
 
+  async findUser(id) {
+    return await Users.findOne({
+      where: {id},
+      attributes:{
+        exclude:["password","createdAt","updateAt"]
+      }
+    })
+  },
+
   async addProfil(id, userArgs) {
-    await Users.update(userArgs, { where: { id } });
+    return await Users.update(userArgs, { where: { id } });
   },
 
   async save(saveArgs) {
