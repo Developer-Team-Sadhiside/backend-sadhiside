@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.38% </span>
+                <span class="strong">35.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/84</span>
+                <span class='fraction'>30/84</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.38% </span>
+                <span class="strong">35.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/84</span>
+                <span class='fraction'>30/84</span>
             </div>
         
             
@@ -150,21 +150,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -232,22 +232,22 @@
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const productRepository = require("../../../repositories");
 &nbsp;
 module.exports = {
-    async addProduct(reqBody) {
-        return await productRepository.api.v1.productRepository.addProduct(reqBody);
-    },
+<span class="fstat-no" title="function not covered" >    async addProduct(reqBody) {</span>
+<span class="cstat-no" title="statement not covered" >        return await productRepository.api.v1.productRepository.addProduct(reqBody);</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    async listAll(args) {</span>
-<span class="cstat-no" title="statement not covered" >      try {</span>
-<span class="cstat-no" title="statement not covered" >        const product = await productRepository.api.v1.productRepository.findAll(args);</span>
-<span class="cstat-no" title="statement not covered" >        const productCount = await productRepository.api.v1.productRepository.getTotalProduct(args);</span>
-<span class="cstat-no" title="statement not covered" >        return {</span>
-<span class="cstat-no" title="statement not covered" >          data:product,</span>
-<span class="cstat-no" title="statement not covered" >          count: productCount,</span>
-<span class="cstat-no" title="statement not covered" >          };</span>
-<span class="cstat-no" title="statement not covered" >      } catch (err){</span>
+    async listAll(args) {
+      try {
+        const product = await productRepository.api.v1.productRepository.findAll(args);
+        const productCount = await productRepository.api.v1.productRepository.getTotalProduct(args);
+        return {
+          data:product,
+          count: productCount,
+          };
+      } <span class="branch-0 cbranch-no" title="branch not covered" >catch (err){</span>
 <span class="cstat-no" title="statement not covered" >        throw err;</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
+    },
 &nbsp;
 <span class="fstat-no" title="function not covered" >    async findProduct(id) {</span>
 <span class="cstat-no" title="statement not covered" >      try {</span>
@@ -319,7 +319,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jul 14 2022 14:08:08 GMT+0700 (Western Indonesia Time)
+                at Thu Jul 14 2022 15:32:34 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

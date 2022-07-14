@@ -38,7 +38,7 @@ describe('POST /api/v1/users/login', () => {
         });
       });
   });
-  it('Login user where password is wrong', () => {
+  it('Login user where password is wrong ', () => {
     return request(app)
       .post('/api/v1/users/login')
       .set('Accept', 'application/json')

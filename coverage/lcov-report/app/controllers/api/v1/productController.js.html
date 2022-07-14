@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.44% </span>
+                <span class="strong">18.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/180</span>
+                <span class='fraction'>34/180</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.44% </span>
+                <span class="strong">18.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/180</span>
+                <span class='fraction'>34/180</span>
             </div>
         
             
@@ -246,14 +246,33 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -273,25 +292,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -424,53 +424,53 @@
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const productService = require("../../../services");
 &nbsp;
 module.exports = {
-  async createProducts(req, res) {
-    const {
-      nama_produk,
-      harga_produk,
-      kategori,
-      deskripsi,
-    } = req.body;
-	  await	productService.api.v1.productService.addProduct({
-      id_user : req.user.id,
-      nama_produk,
-      harga_produk,
-      gambar : req.image,
-      kategori,
-      deskripsi,
-      status : "tersedia"
-    })
-	  .then((createdproduct) =&gt; {
-		res.status(201).json({
-			status: "Success",	
-			data: createdproduct,
-		});
-	}).catch((err) =&gt; {
+<span class="fstat-no" title="function not covered" >  async createProducts(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    const {</span>
+<span class="cstat-no" title="statement not covered" >      nama_produk,</span>
+<span class="cstat-no" title="statement not covered" >      harga_produk,</span>
+<span class="cstat-no" title="statement not covered" >      kategori,</span>
+<span class="cstat-no" title="statement not covered" >      deskripsi,</span>
+<span class="cstat-no" title="statement not covered" >    } = req.body;</span>
+<span class="cstat-no" title="statement not covered" >	  await	productService.api.v1.productService.addProduct({</span>
+<span class="cstat-no" title="statement not covered" >      id_user : req.user.id,</span>
+<span class="cstat-no" title="statement not covered" >      nama_produk,</span>
+<span class="cstat-no" title="statement not covered" >      harga_produk,</span>
+<span class="cstat-no" title="statement not covered" >      gambar : req.image,</span>
+<span class="cstat-no" title="statement not covered" >      kategori,</span>
+<span class="cstat-no" title="statement not covered" >      deskripsi,</span>
+<span class="cstat-no" title="statement not covered" >      status : "tersedia"</span>
+<span class="cstat-no" title="statement not covered" >    })</span>
+<span class="cstat-no" title="statement not covered" >	  .then((createdproduct) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		res.status(201).json({</span>
+<span class="cstat-no" title="statement not covered" >			status: "Success",	</span>
+<span class="cstat-no" title="statement not covered" >			data: createdproduct,</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" >	}).catch((err) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >			res.status(400).json({</span>
 <span class="cstat-no" title="statement not covered" >				status: "FAIL",</span>
 <span class="cstat-no" title="statement not covered" >				message: err.message,</span>
 <span class="cstat-no" title="statement not covered" >			});</span>
 <span class="cstat-no" title="statement not covered" >		});</span>
-  },
+<span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async	listAllProducts(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    await productService.api.v1.productService.listAll()</span>
-<span class="cstat-no" title="statement not covered" >			.then(({data,count}) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >				res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >					status: "OK",</span>
-<span class="cstat-no" title="statement not covered" >					produk: data,</span>
-<span class="cstat-no" title="statement not covered" >					detail: {</span>
-<span class="cstat-no" title="statement not covered" >						total: count</span>
-<span class="cstat-no" title="statement not covered" >					},</span>
-<span class="cstat-no" title="statement not covered" >				});</span>
-<span class="cstat-no" title="statement not covered" >			})</span>
-<span class="cstat-no" title="statement not covered" >			.catch((err) =&gt; {</span>
+  async	listAllProducts(req, res) {
+    await productService.api.v1.productService.listAll()
+			.then(({data,count}) =&gt; {
+				res.status(200).json({
+					status: "OK",
+					produk: data,
+					detail: {
+						total: count
+					},
+				});
+			})
+			.catch((err) =&gt; {
 <span class="cstat-no" title="statement not covered" >				res.status(400).json({</span>
 <span class="cstat-no" title="statement not covered" >					status: "FAIL",</span>
 <span class="cstat-no" title="statement not covered" >					message: err.message,</span>
 <span class="cstat-no" title="statement not covered" >				});</span>
 <span class="cstat-no" title="statement not covered" >		});</span>
-<span class="cstat-no" title="statement not covered" >	},</span>
+	},
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async	findOneProduct(req, res) {</span>
 <span class="cstat-no" title="statement not covered" >    await productService.api.v1.productService.findProduct(req.params.id)</span>
@@ -607,7 +607,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jul 14 2022 14:08:08 GMT+0700 (Western Indonesia Time)
+                at Thu Jul 14 2022 15:32:34 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

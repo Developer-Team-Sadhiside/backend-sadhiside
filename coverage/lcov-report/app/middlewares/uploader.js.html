@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">24% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/25</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>6/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/25</span>
+                <span class='fraction'>6/25</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,51 +94,51 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const multer = require('multer');
 const imageKit = require("../../library/imageKit")
   
 module.exports = {
-  async upload (req,res,next){
-    const files = req.files;
-    const imgBanyak = [];
-    for (let i = 0; i &lt; files.length; i++) {
-      const imageFormat = files[i].mimetype == 'image/png' || files[i].mimetype == 'image/jpg' || files[i].mimetype == 'image/jpeg';
-      if(!imageFormat)<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="fstat-no" title="function not covered" >  async upload (req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    const files = req.files;</span>
+<span class="cstat-no" title="statement not covered" >    const imgBanyak = [];</span>
+<span class="cstat-no" title="statement not covered" >    for (let i = 0; i &lt; files.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      const imageFormat = files[i].mimetype == 'image/png' || files[i].mimetype == 'image/jpg' || files[i].mimetype == 'image/jpeg';</span>
+<span class="cstat-no" title="statement not covered" >      if(!imageFormat){</span>
 <span class="cstat-no" title="statement not covered" >        res.status(400).json({</span>
 <span class="cstat-no" title="statement not covered" >          status: "FAIL",</span>
 <span class="cstat-no" title="statement not covered" >          message: `Wrong image format`,</span>
 <span class="cstat-no" title="statement not covered" >        });</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
-       let img = await imageKit.upload({
-        file: req.files[i].buffer,
-        fileName: `IMG-${Date.now()}.${req.files[i].fieldname}`,
-      });
-      imgBanyak.push(img.url)
-    }
-    req.image = imgBanyak;
-    next();
-   }
+<span class="cstat-no" title="statement not covered" >       let img = await imageKit.upload({</span>
+<span class="cstat-no" title="statement not covered" >        file: req.files[i].buffer,</span>
+<span class="cstat-no" title="statement not covered" >        fileName: `IMG-${Date.now()}.${req.files[i].fieldname}`,</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >      imgBanyak.push(img.url)</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >    req.image = imgBanyak;</span>
+<span class="cstat-no" title="statement not covered" >    next();</span>
+<span class="cstat-no" title="statement not covered" >   }</span>
 }
 &nbsp;
 &nbsp;</pre></td></tr></table></pre>
@@ -148,7 +148,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jul 14 2022 14:08:08 GMT+0700 (Western Indonesia Time)
+                at Thu Jul 14 2022 15:32:34 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
