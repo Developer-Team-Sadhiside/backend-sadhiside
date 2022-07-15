@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.68% </span>
+                <span class="strong">47.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/94</span>
+                <span class='fraction'>42/89</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.68% </span>
+                <span class="strong">47.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/94</span>
+                <span class='fraction'>42/89</span>
             </div>
         
             
@@ -152,12 +152,7 @@
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -179,11 +174,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -251,11 +241,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const userRepository = require("../../../repositories");
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const userRepository = require('../../../repositories');
+require('dotenv').config;
 &nbsp;
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-require("dotenv").config;
 const SALT = 10;
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function encryptPassword(password) {</span></span>
@@ -274,20 +264,15 @@ function createToken(payload) {
 module.exports = {
 <span class="fstat-no" title="function not covered" >  async register(user, reqBody) {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      if (!reqBody.nama)</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: "name field cannot empty" };</span>
-<span class="cstat-no" title="statement not covered" >      if (!reqBody.email)</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: "email field cannot empty" };</span>
-<span class="cstat-no" title="statement not covered" >      if (!reqBody.password)</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: "password field cannot empty" };</span>
+<span class="cstat-no" title="statement not covered" >      if (!reqBody.nama) { throw { status: 422, message: 'name field cannot empty' }; }</span>
+<span class="cstat-no" title="statement not covered" >      if (!reqBody.email) { throw { status: 422, message: 'email field cannot empty' }; }</span>
+<span class="cstat-no" title="statement not covered" >      if (!reqBody.password) { throw { status: 422, message: 'password field cannot empty' }; }</span>
 <span class="cstat-no" title="statement not covered" >      if (</span>
 <span class="cstat-no" title="statement not covered" >        await userRepository.api.v1.userRepository.findByName(reqBody.nama)</span>
-<span class="cstat-no" title="statement not covered" >      )</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 409, message: "choose another name" };</span>
+<span class="cstat-no" title="statement not covered" >      ) { throw { status: 409, message: 'choose another name' }; }</span>
 <span class="cstat-no" title="statement not covered" >      if (</span>
 <span class="cstat-no" title="statement not covered" >        await userRepository.api.v1.userRepository.findByEmail(reqBody.email)</span>
-<span class="cstat-no" title="statement not covered" >      )</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 409, message: "choose another email" };</span>
+<span class="cstat-no" title="statement not covered" >      ) { throw { status: 409, message: 'choose another email' }; }</span>
 <span class="cstat-no" title="statement not covered" >      reqBody.password = await encryptPassword(reqBody.password);</span>
 <span class="cstat-no" title="statement not covered" >      return userRepository.api.v1.userRepository.save(reqBody);</span>
 <span class="cstat-no" title="statement not covered" >    } catch (err) {</span>
@@ -297,30 +282,30 @@ module.exports = {
   async login(reqBody) {
     try {
       const user = await userRepository.api.v1.userRepository.findByEmail(reqBody.email);
-      let comparePassword = '' 
-<span class="branch-0 cbranch-no" title="branch not covered" >      if(user != null){</span>
-<span class="cstat-no" title="statement not covered" >      comparePassword = await bcrypt.compareSync(reqBody.password, user.password)</span>
-<span class="cstat-no" title="statement not covered" >      }else{</span>
-<span class="cstat-no" title="statement not covered" >        comparePassword = false</span>
+      let comparePassword = '';
+<span class="branch-0 cbranch-no" title="branch not covered" >      if (user != null) {</span>
+<span class="cstat-no" title="statement not covered" >        comparePassword = await bcrypt.compareSync(reqBody.password, user.password);</span>
+<span class="cstat-no" title="statement not covered" >      } else {</span>
+<span class="cstat-no" title="statement not covered" >        comparePassword = false;</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
-      if (!reqBody.email)<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: "email field cannot empty" };</span>
-      }else if (!reqBody.password || reqBody.password === 'password')<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: "password field cannot empty" };</span>
-      }else if (user == null)<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 401, message: "email or password wrong" };</span>
-      }else if (!comparePassword)<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        throw { status: 401, message: "email or password wrong" };</span>
-      }else{
-      return createToken({
-        id: user.id,
-        nama: user.nama,
-        email: user.email,
-        role: user.role,
-      }, <span class="branch-0 cbranch-no" title="branch not covered" >process.env.ACCESS_TOKEN_SECRET || 'Token', {</span>
-        expiresIn: '1h'
-      });
-     }
+      if (!reqBody.email) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: 'email field cannot empty' };</span>
+      } else if (!reqBody.password || reqBody.password === 'password') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        throw { status: 422, message: 'password field cannot empty' };</span>
+      } else if (user == null) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        throw { status: 401, message: 'email or password wrong' };</span>
+      } else if (!comparePassword) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        throw { status: 401, message: 'email or password wrong' };</span>
+      } else {
+        return createToken({
+          id: user.id,
+          nama: user.nama,
+          email: user.email,
+          role: user.role,
+        }, <span class="branch-0 cbranch-no" title="branch not covered" >process.env.ACCESS_TOKEN_SECRET || 'Token', {</span>
+          expiresIn: '1h',
+        });
+      }
     } <span class="branch-0 cbranch-no" title="branch not covered" >catch (err) {</span>
 <span class="cstat-no" title="statement not covered" >      throw err;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -335,15 +320,15 @@ module.exports = {
 <span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async getUser(id) {</span>
-<span class="cstat-no" title="statement not covered" >    try{</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      const userData = await userRepository.api.v1.userRepository.findUser(id);</span>
-<span class="cstat-no" title="statement not covered" >      return{</span>
-<span class="cstat-no" title="statement not covered" >        user: userData</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    }catch(err){</span>
+<span class="cstat-no" title="statement not covered" >      return {</span>
+<span class="cstat-no" title="statement not covered" >        user: userData,</span>
+<span class="cstat-no" title="statement not covered" >      };</span>
+<span class="cstat-no" title="statement not covered" >    } catch (err) {</span>
 <span class="cstat-no" title="statement not covered" >      throw err;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -352,7 +337,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jul 15 2022 02:21:14 GMT+0700 (Western Indonesia Time)
+                at Sat Jul 16 2022 03:02:59 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

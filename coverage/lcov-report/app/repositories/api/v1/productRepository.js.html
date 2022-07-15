@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.51% </span>
+                <span class="strong">37.96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/108</span>
+                <span class='fraction'>41/108</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>1/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.51% </span>
+                <span class="strong">37.96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/108</span>
+                <span class='fraction'>41/108</span>
             </div>
         
             
@@ -183,18 +183,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -272,14 +272,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { Products,Users,Like } = require("../../../models");
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { Products, Users, Like } = require('../../../models');
 &nbsp;
 module.exports = {
 <span class="fstat-no" title="function not covered" >  async addProduct(inputData) {</span>
@@ -293,14 +293,14 @@ module.exports = {
   async getProduct(id) {
     return await Products.findOne({
       where: {
-        id: id,
+        id,
       },
-      include:{
+      include: {
         model: Users,
-        attributes:{
-          exclude:["password"]
-        }
-      }
+        attributes: {
+          exclude: ['password'],
+        },
+      },
     });
   },
 &nbsp;
@@ -311,7 +311,7 @@ module.exports = {
 <span class="fstat-no" title="function not covered" >  async getTotalProductByCategory(kategori) {</span>
 <span class="cstat-no" title="statement not covered" >    return await Products.count({</span>
 <span class="cstat-no" title="statement not covered" >      where: {</span>
-<span class="cstat-no" title="statement not covered" >        kategori: kategori,</span>
+<span class="cstat-no" title="statement not covered" >        kategori,</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
@@ -327,7 +327,7 @@ module.exports = {
 <span class="fstat-no" title="function not covered" >  async findByCategory(kategori) {</span>
 <span class="cstat-no" title="statement not covered" >    return await Products.findAll({</span>
 <span class="cstat-no" title="statement not covered" >      where: {</span>
-<span class="cstat-no" title="statement not covered" >        kategori: kategori,</span>
+<span class="cstat-no" title="statement not covered" >        kategori,</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
@@ -346,7 +346,7 @@ module.exports = {
 <span class="cstat-no" title="statement not covered" >        id_user: id,</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      order: [</span>
-<span class="cstat-no" title="statement not covered" >        ["totalLike","DESC"]</span>
+<span class="cstat-no" title="statement not covered" >        ['totalLike', 'DESC'],</span>
 <span class="cstat-no" title="statement not covered" >      ],</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
@@ -355,19 +355,19 @@ module.exports = {
 <span class="cstat-no" title="statement not covered" >    return await Products.findAll({</span>
 <span class="cstat-no" title="statement not covered" >      where: {</span>
 <span class="cstat-no" title="statement not covered" >        id_user: id,</span>
-<span class="cstat-no" title="statement not covered" >        status: "terjual"</span>
+<span class="cstat-no" title="statement not covered" >        status: 'terjual',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async findProductsLike(id) {</span>
 <span class="cstat-no" title="statement not covered" >    return await Products.findAll({</span>
-<span class="cstat-no" title="statement not covered" >      include:{</span>
+<span class="cstat-no" title="statement not covered" >      include: {</span>
 <span class="cstat-no" title="statement not covered" >        model: Like,</span>
 <span class="cstat-no" title="statement not covered" >        where: {</span>
-<span class="cstat-no" title="statement not covered" >          id_pembeli: id</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >          id_pembeli: id,</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
@@ -379,13 +379,13 @@ module.exports = {
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
-  async isDeletedProducts(id) {
-    return await Products.destroy({
-      where: {
-        id,
-      },
-    });
-  },
+<span class="fstat-no" title="function not covered" >  async isDeletedProducts(id) {</span>
+<span class="cstat-no" title="statement not covered" >    return await Products.destroy({</span>
+<span class="cstat-no" title="statement not covered" >      where: {</span>
+<span class="cstat-no" title="statement not covered" >        id,</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -394,7 +394,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jul 15 2022 02:21:14 GMT+0700 (Western Indonesia Time)
+                at Sat Jul 16 2022 03:02:59 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

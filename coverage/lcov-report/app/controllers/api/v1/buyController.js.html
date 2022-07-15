@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.9% </span>
+                <span class="strong">13.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/62</span>
+                <span class='fraction'>7/52</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.9% </span>
+                <span class="strong">13.46% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/62</span>
+                <span class='fraction'>7/52</span>
             </div>
         
             
@@ -115,19 +115,7 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,80 +166,59 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const buyService = require("../../../services");
-const productService = require("../../../services");
-const historyService = require("../../../services");
-const date = require("date-and-time")
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const date = require('date-and-time');
+const buyService = require('../../../services');
+const productService = require('../../../services');
 &nbsp;
 module.exports = {
-<span class="fstat-no" title="function not covered" >  async buyProduct(req,res){</span>
-<span class="cstat-no" title="statement not covered" >    try{</span>
-<span class="cstat-no" title="statement not covered" >      const product = await productService.api.v1.productService.findProduct(req.params.id)</span>
-<span class="cstat-no" title="statement not covered" >      if(!product){</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error ("Product not found")</span>
+<span class="fstat-no" title="function not covered" >  async buyProduct(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >      const product = await productService.api.v1.productService.findProduct(req.params.id);</span>
+<span class="cstat-no" title="statement not covered" >      if (!product) {</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error('Product not found');</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >      const getPurchase = await buyService.api.v1.buyService.getPurchase(req.params.id)</span>
+<span class="cstat-no" title="statement not covered" >      if(getPurchase){</span>
+<span class="cstat-no" title="statement not covered" >        res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >          status: 'FAIL',</span>
+<span class="cstat-no" title="statement not covered" >          message: 'chandra cantik',</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >        return</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" >      await productService.api.v1.productService.update(req.params.id, {</span>
-<span class="cstat-no" title="statement not covered" >        status: "pending",</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
+<span class="cstat-no" title="statement not covered" >        status: 'pending',</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
 <span class="cstat-no" title="statement not covered" >      const now = new Date();</span>
-<span class="cstat-no" title="statement not covered" >      const value = date.addDays(now,12);</span>
-<span class="cstat-no" title="statement not covered" >      const {harga_tawar} = req.body;</span>
+<span class="cstat-no" title="statement not covered" >      const value = date.addDays(now, 12);</span>
+<span class="cstat-no" title="statement not covered" >      const { harga_tawar } = req.body;</span>
 <span class="cstat-no" title="statement not covered" >      const purchase = await buyService.api.v1.buyService.buyProduct({</span>
 <span class="cstat-no" title="statement not covered" >        id_produk: req.params.id,</span>
 <span class="cstat-no" title="statement not covered" >        id_pembeli: req.user.id,</span>
 <span class="cstat-no" title="statement not covered" >        harga_tawar,</span>
-<span class="cstat-no" title="statement not covered" >        tanggal_pembelian: value</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
-<span class="cstat-no" title="statement not covered" >      // const purchase = await historyService.api.v1.historyService.getBid(req.user.id,req.params.id)</span>
-<span class="cstat-no" title="statement not covered" >      // console.log(purchase)</span>
+<span class="cstat-no" title="statement not covered" >        tanggal_pembelian: value,</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
 <span class="cstat-no" title="statement not covered" >      await buyService.api.v1.buyService.createHistory({</span>
 <span class="cstat-no" title="statement not covered" >        id_pembelian: purchase.id,</span>
 <span class="cstat-no" title="statement not covered" >        id_penjual: product.id_user,</span>
-<span class="cstat-no" title="statement not covered" >        id_pembeli: req.user.id</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
+<span class="cstat-no" title="statement not covered" >        id_pembeli: req.user.id,</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
 <span class="cstat-no" title="statement not covered" >      res.status(201).json({</span>
-<span class="cstat-no" title="statement not covered" >        status: "Success",	</span>
+<span class="cstat-no" title="statement not covered" >        status: 'Success',</span>
 <span class="cstat-no" title="statement not covered" >        data: {</span>
 <span class="cstat-no" title="statement not covered" >          nama_pembeli: req.user.nama,</span>
 <span class="cstat-no" title="statement not covered" >          harga_tawar,</span>
 <span class="cstat-no" title="statement not covered" >          tanggal_pembelian: value,</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      });</span>
 <span class="cstat-no" title="statement not covered" >    } catch (err) {</span>
 <span class="cstat-no" title="statement not covered" >      res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >        status: 'FAIL',</span>
 <span class="cstat-no" title="statement not covered" >        message: err.message,</span>
 <span class="cstat-no" title="statement not covered" >      });</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    // .then(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    //   res.status(201).json({</span>
-<span class="cstat-no" title="statement not covered" >    //     status: "Success",	</span>
-<span class="cstat-no" title="statement not covered" >    //     data:{</span>
-<span class="cstat-no" title="statement not covered" >    //       nama_pembeli: req.user.nama,</span>
-<span class="cstat-no" title="statement not covered" >    //       harga_tawar,</span>
-<span class="cstat-no" title="statement not covered" >    //       tanggal_pembelian: value,</span>
-<span class="cstat-no" title="statement not covered" >    //     }</span>
-<span class="cstat-no" title="statement not covered" >    //   });</span>
-<span class="cstat-no" title="statement not covered" >    // }).catch((err) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    //   res.status(400).json({</span>
-<span class="cstat-no" title="statement not covered" >    //     status: "FAIL",</span>
-<span class="cstat-no" title="statement not covered" >    //     message: err.message</span>
-<span class="cstat-no" title="statement not covered" >    //   });</span>
-<span class="cstat-no" title="statement not covered" >    // });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-}
-&nbsp;
+<span class="cstat-no" title="statement not covered" >  },</span>
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -259,7 +226,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jul 15 2022 02:21:14 GMT+0700 (Western Indonesia Time)
+                at Sat Jul 16 2022 03:02:59 GMT+0700 (Western Indonesia Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
