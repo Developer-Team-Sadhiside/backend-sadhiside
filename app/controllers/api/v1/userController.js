@@ -47,6 +47,7 @@ module.exports = {
     console.log(req.image);
     const { kota, alamat, no_hp } = req.body;
     await userService.api.v1.userService.profile(req.user.id, {
+      nama,
       kota,
       alamat,
       no_hp,
@@ -57,6 +58,7 @@ module.exports = {
         res.status(201).json({
           status: 'Success',
           data: {
+            nama,
             kota,
             alamat,
             no_hp,
