@@ -1,7 +1,6 @@
 const date = require('date-and-time');
 const buyService = require('../../../services');
 const productService = require('../../../services');
-const historyService = require('../../../services');
 
 module.exports = {
   async buyProduct(req, res) {
@@ -9,6 +8,14 @@ module.exports = {
       const product = await productService.api.v1.productService.findProduct(req.params.id);
       if (!product) {
         throw new Error('Product not found');
+      }
+      const getPurchase = await buyService.api.v1.buyService.getPurchase(req.params.id)
+      if(getPurchase){
+        res.status(400).json({
+          status: 'FAIL',
+          message: 'chandra cantik',
+        });
+        return
       }
       await productService.api.v1.productService.update(req.params.id, {
         status: 'pending',
@@ -22,8 +29,6 @@ module.exports = {
         harga_tawar,
         tanggal_pembelian: value,
       });
-      // const purchase = await historyService.api.v1.historyService.getBid(req.user.id,req.params.id)
-      // console.log(purchase)
       await buyService.api.v1.buyService.createHistory({
         id_pembelian: purchase.id,
         id_penjual: product.id_user,
@@ -39,6 +44,7 @@ module.exports = {
       });
     } catch (err) {
       res.status(400).json({
+        status: 'FAIL',
         message: err.message,
       });
     }
