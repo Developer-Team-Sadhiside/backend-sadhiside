@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657915380159" clover="3.2.0">
-  <project timestamp="1657915380160" name="All files">
-    <metrics statements="1526" coveredstatements="840" conditionals="44" coveredconditionals="27" methods="79" coveredmethods="21" elements="1649" coveredelements="888" complexity="0" loc="1526" ncloc="1526" packages="14" files="39" classes="39"/>
+<coverage generated="1657917221243" clover="3.2.0">
+  <project timestamp="1657917221243" name="All files">
+    <metrics statements="1520" coveredstatements="812" conditionals="39" coveredconditionals="25" methods="79" coveredmethods="20" elements="1638" coveredelements="857" complexity="0" loc="1520" ncloc="1520" packages="14" files="39" classes="39"/>
     <package name="app">
       <metrics statements="25" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\index.js">
@@ -56,7 +56,7 @@
       </file>
     </package>
     <package name="app.controllers.api.v1">
-      <metrics statements="469" coveredstatements="99" conditionals="8" coveredconditionals="5" methods="18" coveredmethods="3"/>
+      <metrics statements="470" coveredstatements="91" conditionals="7" coveredconditionals="4" methods="18" coveredmethods="3"/>
       <file name="buyController.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\controllers\api\v1\buyController.js">
         <metrics statements="52" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -226,7 +226,7 @@
         <line num="72" count="1" type="stmt"/>
       </file>
       <file name="productController.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\controllers\api\v1\productController.js">
-        <metrics statements="222" coveredstatements="43" conditionals="3" coveredconditionals="3" methods="10" coveredmethods="1"/>
+        <metrics statements="222" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -425,52 +425,52 @@
         <line num="196" count="0" type="stmt"/>
         <line num="197" count="1" type="stmt"/>
         <line num="198" count="1" type="stmt"/>
-        <line num="199" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="200" count="2" type="stmt"/>
-        <line num="201" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="202" count="1" type="stmt"/>
-        <line num="203" count="1" type="stmt"/>
-        <line num="204" count="1" type="stmt"/>
-        <line num="205" count="1" type="stmt"/>
-        <line num="206" count="1" type="stmt"/>
-        <line num="207" count="1" type="stmt"/>
-        <line num="208" count="1" type="stmt"/>
-        <line num="209" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="210" count="1" type="stmt"/>
-        <line num="211" count="1" type="stmt"/>
-        <line num="212" count="1" type="stmt"/>
-        <line num="213" count="1" type="stmt"/>
-        <line num="214" count="1" type="stmt"/>
-        <line num="215" count="1" type="stmt"/>
+        <line num="199" count="1" type="stmt"/>
+        <line num="200" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="202" count="0" type="stmt"/>
+        <line num="203" count="0" type="stmt"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="205" count="0" type="stmt"/>
+        <line num="206" count="0" type="stmt"/>
+        <line num="207" count="0" type="stmt"/>
+        <line num="208" count="0" type="stmt"/>
+        <line num="209" count="0" type="stmt"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="211" count="0" type="stmt"/>
+        <line num="212" count="0" type="stmt"/>
+        <line num="213" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="215" count="0" type="stmt"/>
         <line num="216" count="0" type="stmt"/>
         <line num="217" count="0" type="stmt"/>
         <line num="218" count="0" type="stmt"/>
         <line num="219" count="0" type="stmt"/>
         <line num="220" count="0" type="stmt"/>
-        <line num="221" count="1" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
         <line num="222" count="1" type="stmt"/>
       </file>
       <file name="userController.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\controllers\api\v1\userController.js">
-        <metrics statements="91" coveredstatements="26" conditionals="5" coveredconditionals="2" methods="5" coveredmethods="2"/>
+        <metrics statements="92" coveredstatements="35" conditionals="7" coveredconditionals="4" methods="5" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -528,25 +528,26 @@
         <line num="74" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
+        <line num="77" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="91" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
       </file>
     </package>
     <package name="app.middlewares">
-      <metrics statements="128" coveredstatements="69" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="2"/>
+      <metrics statements="128" coveredstatements="56" conditionals="3" coveredconditionals="1" methods="4" coveredmethods="1"/>
       <file name="authentication.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\middlewares\authentication.js">
         <metrics statements="23" coveredstatements="21" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -556,40 +557,40 @@
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="credentialBuyer.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\middlewares\credentialBuyer.js">
-        <metrics statements="30" coveredstatements="18" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="30" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
@@ -597,13 +598,13 @@
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="23" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
       </file>
       <file name="credentialSeller.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\middlewares\credentialSeller.js">
@@ -983,7 +984,7 @@
       </file>
     </package>
     <package name="app.repositories.api.v1">
-      <metrics statements="206" coveredstatements="89" conditionals="3" coveredconditionals="3" methods="24" coveredmethods="3"/>
+      <metrics statements="206" coveredstatements="84" conditionals="3" coveredconditionals="3" methods="24" coveredmethods="3"/>
       <file name="buyRepository.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\repositories\api\v1\buyRepository.js">
         <metrics statements="31" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -1055,7 +1056,7 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="productRepository.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\repositories\api\v1\productRepository.js">
-        <metrics statements="108" coveredstatements="41" conditionals="1" coveredconditionals="1" methods="13" coveredmethods="1"/>
+        <metrics statements="108" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1067,19 +1068,19 @@
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -1166,7 +1167,7 @@
         <line num="108" count="1" type="stmt"/>
       </file>
       <file name="userRepository.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\repositories\api\v1\userRepository.js">
-        <metrics statements="37" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="2"/>
+        <metrics statements="37" coveredstatements="29" conditionals="3" coveredconditionals="3" methods="6" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1183,17 +1184,17 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
@@ -1229,7 +1230,7 @@
       </file>
     </package>
     <package name="app.services.api.v1">
-      <metrics statements="230" coveredstatements="93" conditionals="11" coveredconditionals="3" methods="22" coveredmethods="3"/>
+      <metrics statements="223" coveredstatements="91" conditionals="10" coveredconditionals="3" methods="22" coveredmethods="3"/>
       <file name="buyService.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\services\api\v1\buyService.js">
         <metrics statements="16" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -1286,7 +1287,7 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="productService.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\services\api\v1\productService.js">
-        <metrics statements="95" coveredstatements="27" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="1"/>
+        <metrics statements="95" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1307,13 +1308,13 @@
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
@@ -1384,7 +1385,7 @@
         <line num="95" count="1" type="stmt"/>
       </file>
       <file name="userService.js" path="D:\FinalProject\ProjectBinar\backend-sadhiside\app\services\api\v1\userService.js">
-        <metrics statements="89" coveredstatements="42" conditionals="9" coveredconditionals="2" methods="7" coveredmethods="2"/>
+        <metrics statements="82" coveredstatements="44" conditionals="10" coveredconditionals="3" methods="7" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1463,17 +1464,10 @@
         <line num="76" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
         <line num="78" count="1" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
+        <line num="79" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
       </file>
     </package>
     <package name="config">

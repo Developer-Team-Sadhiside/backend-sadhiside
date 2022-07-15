@@ -77,7 +77,8 @@ module.exports = {
   async whoAmI(req, res) {
     await userService.api.v1.userService.getUser(req.user.id)
       .then((user) => {
-        res.status(200).json({
+        res.status(201).json({
+          status: 'Success',
           user,
         });
       })

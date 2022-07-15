@@ -77,13 +77,6 @@ module.exports = {
   },
 
   async getUser(id) {
-    try {
-      const userData = await userRepository.api.v1.userRepository.findUser(id);
-      return {
-        user: userData,
-      };
-    } catch (err) {
-      throw err;
-    }
+    return await userRepository.api.v1.userRepository.findUser(id);
   },
 };

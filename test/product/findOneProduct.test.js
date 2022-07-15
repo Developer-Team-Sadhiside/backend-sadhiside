@@ -1,10 +1,7 @@
 const request = require('supertest');
-const path = require('path');
 const app = require('../../app');
 
-const image1 = path.resolve(__dirname, '../../docs/assets/1.jpg');
-
-describe('GET /api/v1/product/:id', () => {
+describe('GET /api/v1/getOneProduct/:id', () => {
   let jwtToken;
   beforeAll(async () => {
     loginUser = await request(app)
@@ -18,7 +15,7 @@ describe('GET /api/v1/product/:id', () => {
 
   it('Where get a product success will get status 200', (done) => {
     request(app)
-    .get('/api/v1/getOneProduct/5')
+    .get('/api/v1/getOneProduct/1')
     .set('content-type', 'application/octet-stream')
     .set('Authorization', `Bearer ${jwtToken}`)
     .then((response) => {

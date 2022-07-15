@@ -24,6 +24,7 @@ describe('PUT /api/v1/users/addProfil', () => {
     .put('/api/v1/users/addProfil')
     .set('authorization', `Bearer ${jwtToken}`)
     .set('Content-Type', 'multipart/form-data')
+    .field('nama', 'Rizki')
     .field('kota', 'kudus')
     .field('alamat', 'sidomulyo')
     .field('no_hp', '087123444345')

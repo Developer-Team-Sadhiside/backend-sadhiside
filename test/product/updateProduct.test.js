@@ -43,9 +43,9 @@ describe("PUT /api/v1/product/:id", () => {
       console.log(err)
     })
   })
-  it('Delete product where product not found will get status 400', (done) => {
+  it('Update product where product not found will get status 400', (done) => {
     request(app)
-    .delete('/api/v1/product/1')
+    .delete('/api/v1/product/0')
     .set('Authorization', `Bearer ${jwtToken}`)
     .then((res) => {
       expect(res.statusCode).toBe(400);

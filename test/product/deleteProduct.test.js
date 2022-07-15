@@ -1,5 +1,4 @@
 const request = require('supertest');
-const path = require('path');
 const app = require('../../app');
 
 describe('DELETE /api/v1/product/:id', () => {
@@ -15,7 +14,7 @@ describe('DELETE /api/v1/product/:id', () => {
   });
 
   it('Delete product where delete success will get status 200', (done) => {
-    request(app).delete('/api/v1/product/1')
+    request(app).delete('/api/v1/product/1') //when delete, you must remigrate db or migrate seed all 
       .set('content-type', 'application/octet-stream')
       .set('Authorization', `Bearer ${jwtToken}`)
       .then((response) => {
