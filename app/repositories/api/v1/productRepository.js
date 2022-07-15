@@ -1,4 +1,4 @@
-const { Products } = require("../../../models");
+const { Products, Users, Like } = require('../../../models');
 
 module.exports = {
   async addProduct(inputData) {
@@ -12,7 +12,13 @@ module.exports = {
   async getProduct(id) {
     return await Products.findOne({
       where: {
-        id: id,
+        id,
+      },
+      include: {
+        model: Users,
+        attributes: {
+          exclude: ['password'],
+        },
       },
     });
   },
@@ -24,7 +30,7 @@ module.exports = {
   async getTotalProductByCategory(kategori) {
     return await Products.count({
       where: {
-        kategori: kategori,
+        kategori,
       },
     });
   },
@@ -40,7 +46,7 @@ module.exports = {
   async findByCategory(kategori) {
     return await Products.findAll({
       where: {
-        kategori: kategori,
+        kategori,
       },
     });
   },
@@ -59,7 +65,7 @@ module.exports = {
         id_user: id,
       },
       order: [
-        ["totalLike","DESC"]
+        ['totalLike', 'DESC'],
       ],
     });
   },
@@ -68,7 +74,18 @@ module.exports = {
     return await Products.findAll({
       where: {
         id_user: id,
-        status: "terjual"
+        status: 'terjual',
+      },
+    });
+  },
+
+  async findProductsLike(id) {
+    return await Products.findAll({
+      include: {
+        model: Like,
+        where: {
+          id_pembeli: id,
+        },
       },
     });
   },
