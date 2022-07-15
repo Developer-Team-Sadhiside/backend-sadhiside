@@ -1,15 +1,15 @@
-const { Users } = require("../../../models");
+const { Users } = require('../../../models');
 
 module.exports = {
   async findByName(nama) {
     return await Users.findOne({
-      where: { nama }
+      where: { nama },
     });
   },
-  
+
   async findByEmail(email) {
     return await Users.findOne({
-      where: { email }
+      where: { email },
     });
   },
 
@@ -19,11 +19,11 @@ module.exports = {
 
   async findUser(id) {
     return await Users.findOne({
-      where: {id},
-      attributes:{
-        exclude:["password","createdAt","updateAt"]
-      }
-    })
+      where: { id },
+      attributes: {
+        exclude: ['password', 'createdAt', 'updateAt'],
+      },
+    });
   },
 
   async addProfil(id, userArgs) {
@@ -34,4 +34,4 @@ module.exports = {
     return await Users.create(saveArgs);
   },
 
-}
+};
