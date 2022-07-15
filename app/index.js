@@ -1,17 +1,17 @@
-require('dotenv').config()
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
-const router = require("../config/routes");
-const cors = require("cors");
+require('dotenv').config();
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const cors = require('cors');
+const router = require('../config/routes');
 
-const publicDir = path.join(__dirname, "../public");
+const publicDir = path.join(__dirname, '../public');
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
 /** Install request logger */
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 /** Install JSON request parser */
 app.use(express.json());

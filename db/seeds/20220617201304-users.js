@@ -1,15 +1,13 @@
-'use strict';
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Users', [{
-      nama: "backendjaya",
-      email: "backendjaya@gmail.com",
-      password: "sipalingbackend",
+      nama: 'backendjaya',
+      email: 'backendjaya@gmail.com',
+      password: 'sipalingbackend',
       kota: null,
       alamat: null,
       no_hp: null,
-      role: "buyer",
+      role: 'buyer',
       createdAt: new Date(),
       updatedAt: new Date(),
     }]);
@@ -22,5 +20,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };

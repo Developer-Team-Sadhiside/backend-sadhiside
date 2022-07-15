@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Products extends Model {
     /**
@@ -10,22 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Products.belongsTo(models.Users,{
+      Products.belongsTo(models.Users, {
         foreignKey: 'id_user',
-      })
+      });
 
-      Products.hasMany(models.Like,{
-        foreignKey: 'id_produk'
-      })
+      Products.hasMany(models.Like, {
+        foreignKey: 'id_produk',
+      });
 
-      Products.hasOne(models.Purchase,{
-        foreignKey: 'id_pembeli'
-      })
+      Products.hasOne(models.Purchase, {
+        foreignKey: 'id_pembeli',
+      });
       // define association here
     }
   }
   Products.init({
-    id_user:DataTypes.INTEGER,
+    id_user: DataTypes.INTEGER,
     nama_produk: DataTypes.STRING,
     harga_produk: DataTypes.FLOAT,
     gambar: DataTypes.ARRAY(DataTypes.TEXT),
@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
     },
     status: DataTypes.ENUM({
-      values: ["tersedia", "pending", "terjual"],
-      defaultValue: "tersedia",
+      values: ['tersedia', 'pending', 'terjual'],
+      defaultValue: 'tersedia',
     }),
   }, {
     sequelize,

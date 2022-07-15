@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Purchase extends Model {
     /**
@@ -9,25 +9,25 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-     static associate(models) {
+    static associate(models) {
       Purchase.belongsTo(models.Products, {
-        foreignKey: 'id_produk'
-      })
+        foreignKey: 'id_produk',
+      });
 
       Purchase.belongsTo(models.Users, {
-        foreignKey: 'id_pembeli'
-      })
+        foreignKey: 'id_pembeli',
+      });
 
       Purchase.hasOne(models.History, {
-        foreignKey: 'id_pembelian'
-      })
+        foreignKey: 'id_pembelian',
+      });
     }
   }
   Purchase.init({
     id_produk: DataTypes.INTEGER,
     id_pembeli: DataTypes.INTEGER,
     tanggal_pembelian: DataTypes.DATE,
-    harga_tawar: DataTypes.INTEGER
+    harga_tawar: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Purchase',

@@ -1,109 +1,130 @@
-const controllers = require("../app/controllers");
-const express = require("express");
+const controllers = require('../app/controllers');
+const express = require('express');
 const router = require('express').Router();
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../docs/swagger.json");
-const middlewares = require("../app/middlewares");
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../docs/swagger.json');
+const middlewares = require('../app/middlewares');
 
 const appRouter = express.Router();
 const apiRouter = express.Router();
 
-
 // open api document
-router.use("/document", swaggerUi.serve);
-router.get("/document", swaggerUi.setup(swaggerDocument));
+router.use('/document', swaggerUi.serve);
+router.get('/document', swaggerUi.setup(swaggerDocument));
 
 // User router
-router.post("/api/v1/users/register",
-  controllers.api.v1.userController.postRegister
+router.post(
+  '/api/v1/users/register',
+  controllers.api.v1.userController.postRegister,
 );
-router.post("/api/v1/users/login", 
-  controllers.api.v1.userController.postLogin
+router.post(
+  '/api/v1/users/login',
+  controllers.api.v1.userController.postLogin,
 );
-router.put("/api/v1/users/addProfil",
+router.put(
+  '/api/v1/users/addProfil',
   // uploadOnMemory.single('img'), you can use this to up 1 image only
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
-  controllers.api.v1.userController.postProfile
+  controllers.api.v1.userController.postProfile,
 );
-router.get("/api/v1/users/whoAmI",
+router.get(
+  '/api/v1/users/whoAmI',
   controllers.api.v1.userController.authorize,
-  controllers.api.v1.userController.whoAmI
-)
+  controllers.api.v1.userController.whoAmI,
+);
 
 // Product router
-router.get("/api/v1/listAllProducts/Unregister",
-  controllers.api.v1.productController.listAllProducts
+router.get(
+  '/api/v1/listAllProducts/Unregister',
+  controllers.api.v1.productController.listAllProducts,
 );
-router.post("/api/v1/addProduct",
+router.post(
+  '/api/v1/addProduct',
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.createProducts
+  controllers.api.v1.productController.createProducts,
 );
-router.get("/api/v1/listAllProducts",
+router.get(
+  '/api/v1/listAllProducts',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
-  controllers.api.v1.productController.listAllProducts
+  controllers.api.v1.productController.listAllProducts,
 );
-router.get("/api/v1/getOneProduct/:id",
+router.get(
+  '/api/v1/getOneProduct/:id',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
-  controllers.api.v1.productController.findOneProduct
+  controllers.api.v1.productController.findOneProduct,
 );
-router.get("/api/v1/listProducts/category/:kategori",
+router.get(
+  '/api/v1/listProducts/category/:kategori',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
-  controllers.api.v1.productController.listProductByCategories
+  controllers.api.v1.productController.listProductByCategories,
 );
-router.get("/api/v1/listProducts/seller",
+router.get(
+  '/api/v1/listProducts/seller',
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.listProductsUsers
+  controllers.api.v1.productController.listProductsUsers,
 );
-router.get("/api/v1/listProducts/seller/interested",
+router.get(
+  '/api/v1/listProducts/seller/interested',
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.listProductsUsers
+  controllers.api.v1.productController.sortingProductsSellerLike,
 );
-router.get("/api/v1/listProducts/seller/sold",
+router.get(
+  '/api/v1/listProducts/seller/sold',
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.listProductsUserSold
+  controllers.api.v1.productController.listProductsSellerSold,
 );
-router.put("/api/v1/product/:id",
+router.get(
+  '/api/v1/listProducts/buyer/liked',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.productController.listProductsBuyerLike,
+);
+router.put(
+  '/api/v1/product/:id',
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.updateProducts
+  controllers.api.v1.productController.updateProducts,
 );
-router.delete("/api/v1/product/:id",
+router.delete(
+  '/api/v1/product/:id',
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.productController.deletedProducts
+  controllers.api.v1.productController.deletedProducts,
 );
-router.post("/api/v1/likes/:id",
+router.post(
+  '/api/v1/likes/:id',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.likeController.likeProduct
+  controllers.api.v1.likeController.likeProduct,
 );
 
 // Buy router
-router.post("/api/v1/buy/product/:id",
+router.post(
+  '/api/v1/buy/product/:id',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
   middlewares.ImSeller.checkUserRole,
-  controllers.api.v1.buyController.buyProduct
+  controllers.api.v1.buyController.buyProduct,
 );
 
-//History router
-router.get("/api/v1/history/seller",
+// History router
+router.get(
+  '/api/v1/history/seller',
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.historyController.getProductBid,
@@ -112,4 +133,3 @@ router.get("/api/v1/history/seller",
 appRouter.use(apiRouter);
 
 module.exports = router;
-

@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Products', {
@@ -6,44 +5,44 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      id_user:{ 
-        type: Sequelize.INTEGER
+      id_user: {
+        type: Sequelize.INTEGER,
       },
       nama_produk: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       harga_produk: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       gambar: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
+        type: Sequelize.ARRAY(Sequelize.TEXT),
       },
       kategori: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       deskripsi: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      totalLike:{
-        type: Sequelize.INTEGER
+      totalLike: {
+        type: Sequelize.INTEGER,
       },
       status: {
         type: Sequelize.ENUM,
-        values: ["tersedia", "pending", "terjual"],
+        values: ['tersedia', 'pending', 'terjual'],
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Products');
-  }
+  },
 };

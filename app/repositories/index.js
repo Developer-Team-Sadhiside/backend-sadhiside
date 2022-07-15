@@ -1,5 +1,5 @@
-const api = require("./api");
-const userRepository = require("./userRepository");
+const api = require('./api');
+const userRepository = require('./userRepository');
 
 module.exports = {
   api,
