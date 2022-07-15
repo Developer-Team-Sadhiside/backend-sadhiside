@@ -38,6 +38,7 @@ module.exports = {
         status: 'FAIL',
         message: 'Product not found',
       });
+      return
     }
     const {
       nama_produk,
@@ -202,6 +203,7 @@ module.exports = {
         status: 'FAIL',
         message: 'Product not found',
       });
+      return
     }
     await productService.api.v1.productService.findProduct(req.params.id)
       .then((data) => {
