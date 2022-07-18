@@ -1,4 +1,5 @@
 const controllers = require('../app/controllers');
+const services = require('../app/services')
 const express = require('express');
 const router = require('express').Router();
 const swaggerUi = require('swagger-ui-express');
@@ -128,6 +129,36 @@ router.get(
   controllers.api.v1.userController.authorize,
   middlewares.ImSeller.checkUserRole,
   controllers.api.v1.historyController.getProductBid,
+);
+router.get(
+  '/api/v1/history/seller/detailOffer/:id',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.historyController.getDetailProductBid,
+);
+router.post(
+  '/api/v1/history/seller/acceptOffer/:id',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.historyController.acceptOffer,
+);
+router.post(
+  '/api/v1/history/seller/rejectOffer/:id',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImSeller.checkUserRole,
+  controllers.api.v1.historyController.rejectOffer,
+);
+router.get(
+  '/api/v1/history/buyer/listProductsOffered',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  controllers.api.v1.historyController.listProductsOfferedBuyer,
+);
+router.get(
+  '/api/v1/history/buyer/listAcceptedOffer',
+  controllers.api.v1.userController.authorize,
+  middlewares.ImBuyer.checkUserRole,
+  controllers.api.v1.historyController.ListAcceptedOffer,
 );
 
 appRouter.use(apiRouter);

@@ -13,7 +13,7 @@ module.exports = {
       if(getPurchase){
         res.status(400).json({
           status: 'FAIL',
-          message: 'chandra cantik',
+          message: 'You cant buy this product again',
         });
         return
       }
