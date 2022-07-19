@@ -110,7 +110,6 @@ router.post(
   '/api/v1/likes/:id',
   controllers.api.v1.userController.authorize,
   middlewares.ImBuyer.checkUserRole,
-  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.likeController.likeProduct,
 );
 
