@@ -40,6 +40,7 @@ module.exports = {
       where: {
         id_user: id,
       },
+
     });
   },
 
@@ -64,9 +65,15 @@ module.exports = {
       where: {
         id_user: id,
       },
+      include: {
+        model: Like,
+        where: {
+          isLike: true
+        }
+      },
       order: [
         ['totalLike', 'DESC'],
-      ],
+      ]
     });
   },
 
