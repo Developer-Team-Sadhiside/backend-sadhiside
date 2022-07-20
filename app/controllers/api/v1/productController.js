@@ -160,6 +160,32 @@ module.exports = {
       });
   },
 
+  async listAllProductsWithLike(req, res) {
+    try {
+      const getProducts = await productService.api.v1.productService.listAll()
+      const produk = await Promise.all(getProducts.map(async(data) => {
+        let markedByUser = false;
+        const isMarked = await productService.api.v1.productService.getOneProductLiked(req.user.id, data.id)
+        if(req.user.id && isMarked){
+          markedByUser = true;
+        }
+        return ({
+          data,
+          markedByUser,
+        });
+      }));
+      res.status(200).json({
+        status: 'OK',
+        produk
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "FAIL",
+        message: err.message
+      });
+    }
+  },
+
   async	listProductByCategories(req, res) {
     await productService.api.v1.productService.getByCategory(req.params.kategori)
       .then(({ data, count }) => {

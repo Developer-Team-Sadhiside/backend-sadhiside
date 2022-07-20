@@ -97,6 +97,18 @@ module.exports = {
     });
   },
 
+  async findOneProductLiked(idBuyer,idProduct) {
+    return await Products.findOne({
+      include: {
+        model: Like,
+        where: {
+          id_pembeli: idBuyer,
+          id_produk: idProduct
+        },
+      },
+    })
+  },
+
   async updateProducts(id, updateArgs) {
     return await Products.update(updateArgs, {
       where: {

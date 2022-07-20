@@ -1,5 +1,4 @@
 const controllers = require('../app/controllers');
-const services = require('../app/services')
 const express = require('express');
 const router = require('express').Router();
 const swaggerUi = require('swagger-ui-express');
@@ -28,7 +27,6 @@ router.put(
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.userController.postProfile,
 );
 router.get(
@@ -47,49 +45,50 @@ router.post(
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.createProducts,
 );
 router.get(
   '/api/v1/listAllProducts',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.listAllProducts,
+);
+router.get(
+  '/api/v1/listAllProducts/like',
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.listAllProductsWithLike,
 );
 router.get(
   '/api/v1/getOneProduct/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.findOneProduct,
 );
 router.get(
   '/api/v1/listProducts/category/:kategori',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.productController.listProductByCategories,
 );
 router.get(
   '/api/v1/listProducts/seller',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.listProductsUsers,
 );
 router.get(
   '/api/v1/listProducts/seller/interested',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.sortingProductsSellerLike,
 );
 router.get(
   '/api/v1/listProducts/seller/sold',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.listProductsSellerSold,
 );
 router.get(
   '/api/v1/listProducts/buyer/liked',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
   controllers.api.v1.productController.listProductsBuyerLike,
 );
 router.put(
@@ -97,19 +96,18 @@ router.put(
   middlewares.uploadOnMemory.any(),
   middlewares.uploader.upload,
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.updateProducts,
 );
 router.delete(
   '/api/v1/product/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.productController.deletedProducts,
 );
 router.post(
   '/api/v1/likes/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
   controllers.api.v1.likeController.likeProduct,
 );
 
@@ -117,8 +115,7 @@ router.post(
 router.post(
   '/api/v1/buy/product/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.buyController.buyProduct,
 );
 
@@ -126,37 +123,37 @@ router.post(
 router.get(
   '/api/v1/history/seller',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.getProductBid,
 );
 router.get(
   '/api/v1/history/seller/detailOffer/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.getDetailProductBid,
 );
 router.post(
   '/api/v1/history/seller/acceptOffer/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.acceptOffer,
 );
 router.post(
   '/api/v1/history/seller/rejectOffer/:id',
   controllers.api.v1.userController.authorize,
-  middlewares.ImSeller.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.rejectOffer,
 );
 router.get(
   '/api/v1/history/buyer/listProductsOffered',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.listProductsOfferedBuyer,
 );
 router.get(
   '/api/v1/history/buyer/listAcceptedOffer',
   controllers.api.v1.userController.authorize,
-  middlewares.ImBuyer.checkUserRole,
+  middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.ListAcceptedOffer,
 );
 
