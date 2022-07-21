@@ -164,14 +164,23 @@ module.exports = {
     try {
       const getProducts = await productService.api.v1.productService.listAll()
       const produk = await Promise.all(getProducts.map(async(data) => {
-        let markedByUser = false;
+        let isLike = false;
         const isMarked = await productService.api.v1.productService.getOneProductLiked(req.user.id, data.id)
         if(req.user.id && isMarked){
-          markedByUser = true;
+          isLike = true;
         }
         return ({
-          data,
-          markedByUser,
+          id: data.id,
+          id_user: data.id_user,
+          nama_produk: data.nama_produk,
+          harga_produk: data.harga_produk,
+          gambar: data.gambar,
+          kategori: data.kategori,
+          deskripsi: data.deskripsi,
+          totalLike: data.totalLike,
+          status: data.status,
+          updateAt: data.updateAt,
+          isLike,
         });
       }));
       res.status(200).json({
@@ -222,27 +231,73 @@ module.exports = {
   },
 
   // for general
-  async	findOneProduct(req, res) {
-    const product = await productService.api.v1.productService.findProduct(req.params.id);
-    if (!product) {
+  async	findOneProductWhenOffer(req, res) {
+    try{
+      let ket = ''
+      const produk = await productService.api.v1.productService.findProduct(req.params.id);
+      if (!produk) {
+        throw new Error ('Product not found')
+      }
+      if (produk.status == 'tersedia'){
+        ket = 'Saya tertarik dan ingin nego'
+      }
+      else if (produk.Purchase.id_pembeli == req.user.id && produk.status == 'pending'){
+        ket = 'Kamu akan segera dihubungi'
+      } 
+      else if (produk.status == 'pending'){
+        ket = 'Produk sedang ditawar orang lain'
+      }
+      res.status(200).json({
+        status: 'OK',
+        produk,
+        ket,
+      });
+    }catch(err){
       res.status(400).json({
         status: 'FAIL',
-        message: 'Product not found',
+        message: err.message,
       });
-      return
     }
-    await productService.api.v1.productService.findProduct(req.params.id)
-      .then((data) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
-      });
   },
+
+  async findOneProduct (req,res) {
+    try{
+      const product = await productService.api.v1.productService.findProduct(req.params.id);
+      if (!product) {
+        throw new Error ('Product not found')
+      }
+      const produk = await productService.api.v1.productService.findProduct(req.params.id)
+      res.status(200).json({
+        status: 'OK',
+        produk,
+      });
+    }catch(err){
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  }
+  // const product = await productService.api.v1.productService.findProduct(req.params.id);
+  //   if (!product) {
+  //     res.status(400).json({
+  //       status: 'FAIL',
+  //       message: 'Product not found',
+  //     });
+  //     return
+  //   }
+    // await productService.api.v1.productService.findProduct(req.params.id)
+    //   .then((data) => {
+    //     res.status(200).json({
+    //       status: 'OK',
+    //       produk: data,
+
+    //     });
+    //   })
+    //   .catch((err) => {
+        // res.status(400).json({
+        //   status: 'FAIL',
+        //   message: err.message,
+        // });
+    //   });
 };

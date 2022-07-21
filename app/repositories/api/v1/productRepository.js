@@ -1,4 +1,4 @@
-const { Products, Users, Like } = require('../../../models');
+const { Products, Users, Like, Purchase } = require('../../../models');
 
 module.exports = {
   async addProduct(inputData) {
@@ -6,20 +6,26 @@ module.exports = {
   },
 
   async findAll(args) {
-    return await Products.findAll(args);
+    return await Products.findAll(args,{
+      order: [
+        ['updateAt', 'ASC'],
+      ]
+    });
   },
 
   async getProduct(id) {
     return await Products.findOne({
       where: {
-        id,
+        id: id
       },
-      include: {
+      include: [{
         model: Users,
         attributes: {
           exclude: ['password'],
         },
-      },
+      },{
+        model: Purchase,
+      }],
     });
   },
 

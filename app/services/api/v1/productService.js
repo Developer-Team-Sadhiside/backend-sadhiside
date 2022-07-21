@@ -20,11 +20,7 @@ module.exports = {
   },
 
   async findProduct(id) {
-    try {
       return await productRepository.api.v1.productRepository.getProduct(id);
-    } catch (err) {
-      throw err;
-    }
   },
 
   async getByCategory(kategori) {
