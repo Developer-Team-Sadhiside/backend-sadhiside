@@ -64,6 +64,11 @@ router.get(
   controllers.api.v1.productController.findOneProduct,
 );
 router.get(
+  '/api/v1/getOneProductWhenOffer/:id',
+  controllers.api.v1.userController.authorize,
+  controllers.api.v1.productController.findOneProductWhenOffer,
+);
+router.get(
   '/api/v1/listProducts/category/:kategori',
   controllers.api.v1.userController.authorize,
   controllers.api.v1.productController.listProductByCategories,
