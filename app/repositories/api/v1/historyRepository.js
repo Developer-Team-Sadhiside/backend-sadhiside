@@ -31,8 +31,11 @@ module.exports = {
     return await Purchase.findAll({
       where: {
         id_pembeli: id
+      },
+      include: {
+        model: Products
       }
-    });
+    })
   },
 
   async updateOffer(id,args){

@@ -9,6 +9,7 @@ module.exports = {
       res.status(200).json({
         status: 'OK',
         data,
+        title: 'Tawaran untuk produkmu'
       });
     }catch(err){
       res.status(400).json({
@@ -60,7 +61,7 @@ module.exports = {
       await productService.api.v1.productService.update(req.params.id, {
         status: 'tersedia',
       })
-      await historyService.api.v1.historyService.deletePurchaseReject(req.params.id)
+      await historyService.api.v1.historyService.deletePurchase(req.params.id)
       res.status(200).json({
         status: 'OK',
         message: 'Purchase has been deleted'
@@ -80,6 +81,7 @@ module.exports = {
       res.status(200).json({
         status: 'OK',
         data,
+        title: 'Penawaran Produk'
       });
     }catch(err){
       res.status(400).json({
@@ -95,6 +97,8 @@ module.exports = {
     res.status(200).json({
       status: 'OK',
       data,
+      notif: 'Kamu akan segera dihubungi penjual via Whatsapp',
+      title: 'Penawaran produk'
     });
   }catch(err){
     res.status(400).json({
