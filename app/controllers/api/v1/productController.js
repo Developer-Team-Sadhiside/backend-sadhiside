@@ -143,13 +143,10 @@ module.exports = {
   // for buyer
   async	listAllProducts(req, res) {
     await productService.api.v1.productService.listAll()
-      .then(({ data, count }) => {
+      .then((produk) => {
         res.status(200).json({
           status: 'OK',
-          produk: data,
-          detail: {
-            total: count,
-          },
+          produk,
         });
       })
       .catch((err) => {

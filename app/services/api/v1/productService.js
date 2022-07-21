@@ -7,16 +7,6 @@ module.exports = {
 
   async listAll(args) {
     return await productRepository.api.v1.productRepository.findAll(args);
-    // try {
-    //   const product = await productRepository.api.v1.productRepository.findAll(args);
-    //   const productCount = await productRepository.api.v1.productRepository.getTotalProduct(args);
-    //   return {
-    //     data: product,
-    //     count: productCount,
-    //   };
-    // } catch (err) {
-    //   throw err;
-    // }
   },
 
   async findProduct(id) {
