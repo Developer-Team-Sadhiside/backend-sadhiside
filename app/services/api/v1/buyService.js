@@ -8,7 +8,7 @@ module.exports = {
     return await buyRepository.api.v1.buyRepository.historyCreated(data);
   },
   async getPurchase(id) {
-    return await buyRepository.api.v1.buyRepository.findAllPurchase(id);
+    return await buyRepository.api.v1.buyRepository.findOnePurchase(id);
   },
   async deleteSamePurchase(idProduct,idBuyer) {
     return await buyRepository.api.v1.buyRepository.deletePurchase(idProduct,idBuyer);

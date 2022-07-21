@@ -44,34 +44,27 @@ module.exports = {
   },
 
   async postProfile(req, res) {
-    console.log(req.image);
-    const { kota, alamat, no_hp } = req.body;
-    await userService.api.v1.userService.profile(req.user.id, {
-      nama,
-      kota,
-      alamat,
-      no_hp,
-      foto: req.image[0],
-      role: ['buyer', 'seller'],
-    })
-      .then(() => {
-        res.status(201).json({
-          status: 'Success',
-          data: {
-            nama,
-            kota,
-            alamat,
-            no_hp,
-            foto: req.image[0],
-            role: ['buyer', 'seller'],
-          },
-        });
-      }).catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try{
+      const { nama, kota, alamat, no_hp } = req.body;
+      const data = await userService.api.v1.userService.profile(req.user.id, {
+        nama,
+        kota,
+        alamat,
+        no_hp,
+        foto: req.image[0],
+        role: ['buyer', 'seller'],
+      })
+      await 
+      res.status(201).json({
+        status: 'Success',
+        data,
       });
+    }catch(err){
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async whoAmI(req, res) {

@@ -7,7 +7,7 @@ module.exports = {
   async historyCreated(data) {
     return await History.create(data);
   },
-  async findAllPurchase(id) {
+  async findOnePurchase(id) {
     return await Purchase.findOne({
       where:{
         id_produk:id

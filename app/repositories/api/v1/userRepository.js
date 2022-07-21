@@ -27,7 +27,9 @@ module.exports = {
   },
 
   async addProfil(id, userArgs) {
-    return await Users.update(userArgs, { where: { id } });
+    return await Users.update(userArgs, { 
+      where: { id } 
+    });
   },
 
   async save(saveArgs) {

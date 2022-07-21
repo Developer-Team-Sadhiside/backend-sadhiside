@@ -14,8 +14,8 @@ function encryptPassword(password) {
   });
 }
 
-function createToken(payload) {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+function createToken(payload, ACCESS_TOKEN_SECRET, expiresIn) {
+  return jwt.sign(payload, ACCESS_TOKEN_SECRET, expiresIn);
 }
 
 module.exports = {
@@ -63,6 +63,7 @@ module.exports = {
           expiresIn: '1h',
         });
       }
+      
     } catch (err) {
       throw err;
     }
