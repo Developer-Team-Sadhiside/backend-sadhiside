@@ -98,6 +98,7 @@ module.exports = {
         model: Like,
         where: {
           id_pembeli: id,
+          isLike: true,
         },
       },
     });
@@ -109,7 +110,8 @@ module.exports = {
         model: Like,
         where: {
           id_pembeli: idBuyer,
-          id_produk: idProduct
+          id_produk: idProduct,
+          isLike: true,
         },
       },
     })
