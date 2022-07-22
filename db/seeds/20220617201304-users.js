@@ -1,13 +1,19 @@
+'use strict';
+const bcrypt = require("bcryptjs");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const password = "123456";
+    const encryptedPassword = bcrypt.hashSync(password, 10)
+
     await queryInterface.bulkInsert('Users', [{
       nama: 'buyer',
       email: 'buyer@gmail.com',
-      password: '123456',
-      kota: null,
-      alamat: null,
-      no_hp: null,
-      foto: null,
+      password: encryptedPassword,
+      kota: 'Menara Kudus',
+      alamat: 'jln yang indah dengan mu',
+      no_hp: '081244566881',
+      foto: 'https://ik.imagekit.io/rizkioktav70/IMG-1657790861342_OnN1TnQ0j.img',
       role: ['buyer'],
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -15,11 +21,11 @@ module.exports = {
     {
       nama: 'seller',
       email: 'seller@gmail.com',
-      password: '123456',
+      password: encryptedPassword,
       kota: 'Semarang',
       alamat: 'Krapyak',
-      no_hp: 081235333554,
-      foto: null,
+      no_hp:'081235333554',
+      foto: 'https://ik.imagekit.io/rizkioktav70/IMG-1657790861342_OnN1TnQ0j.img',
       role: ['buyer','seller'],
       createdAt: new Date(),
       updatedAt: new Date(),
