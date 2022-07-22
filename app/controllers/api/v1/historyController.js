@@ -61,7 +61,7 @@ module.exports = {
       await productService.api.v1.productService.update(req.params.id, {
         status: 'tersedia',
       })
-      await historyService.api.v1.historyService.deletePurchase(req.params.id)
+      await historyService.api.v1.historyService.deletePurchaseReject(req.params.id)
       res.status(200).json({
         status: 'OK',
         message: 'Purchase has been deleted'
