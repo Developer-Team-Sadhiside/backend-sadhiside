@@ -14,8 +14,8 @@ describe('POST /api/v1/addProduct', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'seller@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
     console.log(jwtToken);
@@ -32,26 +32,28 @@ describe('POST /api/v1/addProduct', () => {
       },
     });
   });
-  it('Add a session', (done) => {
+
+  it('When user success add product will get status 201', (done) => {
     request(app).post('/api/v1/addProduct')
-      .set('content-type', 'application/octet-stream')
-      .set('Authorization', `Bearer ${jwtToken}`)
-      .attach('gambar', image1)
-      .attach('gambar', image2)
-      .attach('gambar', image3)
-      .attach('gambar', image4)
-      .attach({
-        nama_produk: 'Redmi Note 10 Pro test',
-        harga_produk: '3999999',
-        kategori: 'Hp',
-        deskripsi: 'Hp bagus ',
-      })
-      .then((response) => {
-        expect(response.statusCode).toBe(201);
-        done();
-      })
-      .catch((err) => {
-        console.log(err);
+    .set('content-type', 'application/octet-stream')
+    .set('Authorization', `Bearer ${jwtToken}`)
+    .attach('gambar', image1)
+    .attach('gambar', image2)
+    .attach('gambar', image3)
+    .attach('gambar', image4)
+    .attach({
+      nama_produk: 'Redmi Note 10 Pro test',
+      harga_produk: '3999999',
+      kategori: 'Hp',
+      deskripsi: 'Hp bagus ',
+    })
+    .then((response) => {
+      expect(response.statusCode).toBe(201);
+      expect.objectContaining({
+        status: expect.any(String),
+        data: expect.any(Object),
       });
+      done();
+    })
   });
 });

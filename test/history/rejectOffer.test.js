@@ -15,7 +15,7 @@ describe('POST /api/v1/history/seller/rejectOffer/:id', () => {
   });
 
   it('Where user success offer, user will get status 200', () => request(app)
-  .post('/api/v1/history/seller/rejectOffer/2')
+  .post('/api/v1/history/seller/rejectOffer/3')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
   .then((res) => {

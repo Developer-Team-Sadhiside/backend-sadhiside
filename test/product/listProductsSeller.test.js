@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../../app');
 // const { Products } = require("../../app/models");
 
-describe('GET /api/v1/listProducts/seller/sold', () => {
+describe('GET /api/v1/listProducts/seller', () => {
   let jwtToken;
   beforeAll(async () => {
     loginUser = await request(app)
@@ -14,8 +14,8 @@ describe('GET /api/v1/listProducts/seller/sold', () => {
     jwtToken = loginUser.body.token;
   });
 
-  it('When seller success list products was sold will get status 200', () => request(app)
-    .get('/api/v1/listProducts/seller/sold')
+  it('List products seller', () => request(app)
+    .get('/api/v1/listProducts/seller')
     .set('authorization', `Bearer ${jwtToken}`)
     .set('Accept', 'application/json')
     .then((res) => {
@@ -23,7 +23,8 @@ describe('GET /api/v1/listProducts/seller/sold', () => {
       expect(res.body).toEqual(
         expect.objectContaining({
           status: expect.any(String),
-          produk: expect.any(Object),
+          produk: expect.any(Array),
+          detail: expect.any(Object),
         }),
       );
     }));

@@ -7,14 +7,14 @@ describe('DELETE /api/v1/product/:id', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'seller@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
   });
 
-  it('Delete product where delete success will get status 200', (done) => {
-    request(app).delete('/api/v1/product/1') //when delete, you must remigrate db or migrate seed all 
+  it('Where delete success will get status 200', (done) => {
+    request(app).delete('/api/v1/product/4') 
       .set('content-type', 'application/octet-stream')
       .set('Authorization', `Bearer ${jwtToken}`)
       .then((response) => {
@@ -25,6 +25,7 @@ describe('DELETE /api/v1/product/:id', () => {
         console.log(err);
       });
   });
+  
   it('Delete product where product not found will get status 400', (done) => {
     request(app)
       .delete('/api/v1/product/0')

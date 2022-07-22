@@ -8,14 +8,14 @@ describe('GET /api/v1/listProducts/category/:kategori', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'buyer@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
   });
 
   it('List products by category', () => request(app)
-    .get('/api/v1/listProducts/category/hp')
+    .get('/api/v1/listProducts/category/Laptop')
     .set('authorization', `Bearer ${jwtToken}`)
     .set('Accept', 'application/json')
     .then((res) => {

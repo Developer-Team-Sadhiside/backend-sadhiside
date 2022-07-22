@@ -7,17 +7,18 @@ describe('Users', () => {
   afterAll(async () => {
     users = await Users.destroy({
       where: {
-        nama: 'rizki1',
-        email: 'rizki1@gmail.com',
+        nama: 'test',
+        email: 'test@gmail.com',
       },
     });
   });
-  it('Register users', () => request(app)
+
+  it('When user success register account will get status 202', () => request(app)
     .post('/api/v1/users/register')
     .set('Accept', 'application/json')
     .send({
-      nama: 'rizki1',
-      email: 'rizki1@gmail.com',
+      nama: 'test',
+      email: 'test@gmail.com',
       password: '12345',
     })
     .then((res) => {
@@ -28,13 +29,14 @@ describe('Users', () => {
         role: expect.any(Array),
       });
     }));
-  it('Register user with already taken email', () => request(app)
+
+  it('When user register with already taken email will get status 409', () => request(app)
     .post('/api/v1/users/register')
     .set('Accept', 'application/json')
     .send({
       nama: 'chandra',
-      email: 'rizki1@gmail.com',
-      password: '12345',
+      email: 'test@gmail.com',
+      password: '123456',
     })
     .then((res) => {
       expect(res.statusCode).toBe(409);
@@ -42,11 +44,12 @@ describe('Users', () => {
         message: expect.any(String),
       });
     }));
-  it('Register user with already taken name', () => request(app)
+
+  it('When user register with already taken name will get status 409', () => request(app)
     .post('/api/v1/users/register')
     .set('Accept', 'application/json')
     .send({
-      nama: 'rizki',
+      nama: 'buyer',
       email: 'chandra@gmail.com',
       password: '12345',
     })
@@ -57,12 +60,57 @@ describe('Users', () => {
       });
     }));
 
-  it('Register user with empty input', () => request(app)
+    it('When user register with empty input will get status 422', () => request(app)
     .post('/api/v1/users/register')
     .set('Accept', 'application/json')
     .send({
       nama: '',
       email: '',
+      password: '',
+    })
+    .then((res) => {
+      expect(res.statusCode).toBe(422);
+      expect.objectContaining({
+        message: expect.any(String),
+      });
+    }));
+
+    it('When user register with empty name will get status 422', () => request(app)
+    .post('/api/v1/users/register')
+    .set('Accept', 'application/json')
+    .send({
+      nama: '',
+      email: 'chandra@gmail.com',
+      password: '123456',
+    })
+    .then((res) => {
+      expect(res.statusCode).toBe(422);
+      expect.objectContaining({
+        message: expect.any(String),
+      });
+    }));
+
+    it('When user register with empty email will get status 422', () => request(app)
+    .post('/api/v1/users/register')
+    .set('Accept', 'application/json')
+    .send({
+      nama: 'chandra',
+      email: '',
+      password: '123456',
+    })
+    .then((res) => {
+      expect(res.statusCode).toBe(422);
+      expect.objectContaining({
+        message: expect.any(String),
+      });
+    }));
+
+  it('When user register with empty password will get status 422', () => request(app)
+    .post('/api/v1/users/register')
+    .set('Accept', 'application/json')
+    .send({
+      nama: 'chandra',
+      email: 'chandra@gmail.com',
       password: '',
     })
     .then((res) => {

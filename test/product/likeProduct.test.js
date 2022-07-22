@@ -8,14 +8,16 @@ describe('POST /api/v1/likes/:id', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'buyer@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
     console.log(jwtToken);
   });
-  it('like products', () => request(app)
-  .post('/api/v1/likes/6')
+
+  it('Where user success like product will get 200', () => 
+  request(app)
+  .post('/api/v1/likes/1')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
   .then((res) => {
@@ -27,8 +29,9 @@ describe('POST /api/v1/likes/:id', () => {
       }),
     );
   }));
-  it('unlike products', () => request(app)
-  .post('/api/v1/likes/6')
+
+  it('Where user success unlike product will get 200', () => request(app)
+  .post('/api/v1/likes/1')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
   .then((res) => {

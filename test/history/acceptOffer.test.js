@@ -8,7 +8,7 @@ describe('POST /api/v1/history/seller/acceptOffer/:id', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki1@gmail.com',
+        email: 'seller@gmail.com',
         password: '123456',
       });
     jwtToken = loginUser.body.token;

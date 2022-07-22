@@ -7,8 +7,8 @@ describe('GET /api/v1/getOneProduct/:id', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'buyer@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
   });
@@ -30,6 +30,7 @@ describe('GET /api/v1/getOneProduct/:id', () => {
     console.log(err);
     });
   });
+  
   it('Where product cant found will get status 400', (done) => {
     request(app)
     .get('/api/v1/getOneProduct/0')

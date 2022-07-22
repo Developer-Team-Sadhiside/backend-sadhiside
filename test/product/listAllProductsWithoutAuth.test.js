@@ -1,6 +1,5 @@
 const request = require('supertest');
 const app = require('../../app');
-// const { Products } = require("../../app/models");
 
 describe('GET /api/v1/listAllProducts/Unregister', () => {
 
@@ -12,8 +11,7 @@ describe('GET /api/v1/listAllProducts/Unregister', () => {
       expect(res.body).toEqual(
         expect.objectContaining({
           status: expect.any(String),
-          produk: expect.any(Array),
-          detail: expect.any(Object),
+          produk: expect.any(Array)
         }),
       );
     }));

@@ -7,10 +7,42 @@ describe('GET /api/v1/users/whoAmI', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'buyer@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
+  });
+
+  it('Where unregistered user access a endpoint will get status 400', (done) => {
+    request(app)
+    .get('/api/v1/users/whoAmI')
+    .set('content-type', 'application/octet-stream')
+    .then((response) => {
+    expect(response.statusCode).toBe(400);
+     expect.objectContaining({
+      message: expect.any(String),
+    });
+    done();
+    })
+    .catch((err) => {
+    console.log(err);
+    });
+  });
+
+  it('Where get a user without token will get status 400', (done) => {
+    request(app)
+    .get('/api/v1/users/whoAmI')
+    .set('content-type', 'application/octet-stream')
+    .then((response) => {
+    expect(response.statusCode).toBe(400);
+     expect.objectContaining({
+      message: expect.any(String),
+    });
+    done();
+    })
+    .catch((err) => {
+    console.log(err);
+    });
   });
 
   it('Where get a user success will get status 201', (done) => {
