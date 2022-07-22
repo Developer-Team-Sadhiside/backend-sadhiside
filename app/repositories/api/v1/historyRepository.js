@@ -32,9 +32,12 @@ module.exports = {
       where: {
         id_pembeli: id
       },
-      include: {
-        model: Products
-      }
+      include: [{
+        model: Products,
+        where: {
+          status: 'pending'
+        },
+      }]
     })
   },
 
