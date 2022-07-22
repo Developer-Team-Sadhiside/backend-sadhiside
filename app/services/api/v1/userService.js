@@ -21,15 +21,19 @@ function createToken(payload, ACCESS_TOKEN_SECRET, expiresIn) {
 module.exports = {
   async register(user, reqBody) {
     try {
-      if (!reqBody.nama) { throw { status: 422, message: 'name field cannot empty' }; }
-      if (!reqBody.email) { throw { status: 422, message: 'email field cannot empty' }; }
-      if (!reqBody.password) { throw { status: 422, message: 'password field cannot empty' }; }
-      if (
-        await userRepository.api.v1.userRepository.findByName(reqBody.nama)
-      ) { throw { status: 409, message: 'choose another name' }; }
-      if (
-        await userRepository.api.v1.userRepository.findByEmail(reqBody.email)
-      ) { throw { status: 409, message: 'choose another email' }; }
+      if (!reqBody.nama) { 
+        throw { status: 422, message: 'name field cannot empty' }; 
+      }
+      if (!reqBody.email) { 
+        throw { status: 422, message: 'email field cannot empty' }; 
+      }
+      if (!reqBody.password) { 
+        throw { status: 422, message: 'password field cannot empty' }; 
+      }
+      if ( await userRepository.api.v1.userRepository.findByName(reqBody.nama)) { 
+        throw { status: 409, message: 'choose another name' }; }
+      if (await userRepository.api.v1.userRepository.findByEmail(reqBody.email)) { 
+        throw { status: 409, message: 'choose another email' }; }
       reqBody.password = await encryptPassword(reqBody.password);
       return userRepository.api.v1.userRepository.save(reqBody);
     } catch (err) {
@@ -60,7 +64,7 @@ module.exports = {
           email: user.email,
           role: user.role,
         }, process.env.ACCESS_TOKEN_SECRET || 'Token', {
-          expiresIn: '1h',
+          expiresIn: '24h',
         });
       }
       
