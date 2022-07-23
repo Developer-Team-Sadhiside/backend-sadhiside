@@ -3,6 +3,7 @@ const { Purchase, Products, Users } = require('../../../models');
 module.exports = {
   async findBidProductSeller(id) {
     return await Purchase.findAll({
+      order: [["id", "DESC"]],
       include: [{
         model: Products,
         where: {
@@ -29,6 +30,7 @@ module.exports = {
 
   async findProductsOfferedBuyer(id) {
     return await Purchase.findAll({
+      order: [["id", "DESC"]],
       where: {
         id_pembeli: id
       },
@@ -69,6 +71,7 @@ module.exports = {
 
   async findAcceptedOfferBuyer(id) {
     return await Purchase.findAll({
+      order: [["id", "DESC"]],
       where: {
         id_pembeli: id
       },

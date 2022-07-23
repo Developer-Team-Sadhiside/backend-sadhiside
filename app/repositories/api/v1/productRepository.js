@@ -8,6 +8,13 @@ module.exports = {
   async findAll(args) {
     return await Products.findAll(args, {
       order: [["updateAt", "ASC"]],
+      exclude: [
+        {
+          where: {
+            status: 'terjual'
+          }
+        }
+      ]
     });
   },
 
@@ -56,6 +63,7 @@ module.exports = {
 
   async findProductsUsers(id) {
     return await Products.findAll({
+      order: [["id", "DESC"]],
       where: {
         id_user: id,
       },

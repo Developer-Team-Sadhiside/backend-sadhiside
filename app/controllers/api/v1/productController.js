@@ -3,109 +3,99 @@ const productService = require('../../../services');
 module.exports = {
 // for seller
   async createProducts(req, res) {
-    const {
-      nama_produk,
-      harga_produk,
-      kategori,
-      deskripsi,
-    } = req.body;
-	  await	productService.api.v1.productService.addProduct({
-      id_user: req.user.id,
-      nama_produk,
-      harga_produk,
-      gambar: req.image,
-      kategori,
-      deskripsi,
-      status: 'tersedia',
-    })
-	  .then((createdproduct) => {
-        res.status(201).json({
-          status: 'Success',
-          data: createdproduct,
-        });
-      }).catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try{
+      const {
+        nama_produk,
+        harga_produk,
+        kategori,
+        deskripsi,
+      } = req.body;
+      const data = await	productService.api.v1.productService.addProduct({
+        id_user: req.user.id,
+        nama_produk,
+        harga_produk,
+        gambar: req.image,
+        kategori,
+        deskripsi,
+        status: 'tersedia',
+      })
+      res.status(201).json({
+        status: 'Success',
+        data,
       });
+    }catch(err){
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async updateProducts(req, res) {
-    const product = await productService.api.v1.productService.findProduct(req.params.id);
-    if (!product) {
+    try{
+      const product = await productService.api.v1.productService.findProduct(req.params.id);
+      if (!product) {
+        throw new Error('Product not found')
+      }
+      const {
+        nama_produk,
+        harga_produk,
+        kategori,
+        deskripsi,
+      } = req.body;
+      await productService.api.v1.productService.update(req.params.id, {
+        nama_produk,
+        harga_produk,
+        gambar: req.image,
+        kategori,
+        deskripsi,
+      })
+      res.status(200).json({
+        status: 'Update product success',
+      });
+    }catch(err){
       res.status(400).json({
         status: 'FAIL',
-        message: 'Product not found',
+        message: err.message,
       });
-      return
     }
-    const {
-      nama_produk,
-      harga_produk,
-      kategori,
-      deskripsi,
-    } = req.body;
-    await productService.api.v1.productService.update(req.params.id, {
-      nama_produk,
-      harga_produk,
-      gambar: req.image,
-      kategori,
-      deskripsi,
-    })
-      .then(() => {
-        res.status(200).json({
-          status: 'OK',
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
-      });
   },
 
   async deletedProducts(req, res) {
-    const product = await productService.api.v1.productService.findProduct(req.params.id);
-    if (!product) {
+    try {
+      const product = await productService.api.v1.productService.findProduct(req.params.id);
+      if (!product) {
+        throw new Error('Product not found')
+      }
+      await productService.api.v1.productService.isDeletedProducts(req.params.id)
+      res.status(200).json({
+        status: 'Delete product success',
+      });
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
-        message: 'Product not found',
+        message: err.message,
       });
-      return;
     }
-    await productService.api.v1.productService.isDeletedProducts(req.params.id)
-      .then(() => {
-        res.status(200).json({
-          status: 'Success',
-        });
-      })
-      .catch((err) => {
-        res.status(422).json({
-          status: 'FAIL',
-          message: err.message,
-        });
-      });
   },
 
   async	listProductsUsers(req, res) {
-    await productService.api.v1.productService.getProductsUsers(req.user.id)
-      .then(({ data, count }) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-          detail: {
-            total: count,
-          },
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.getProductsUsers(req.user.id)
+      res.status(200).json({
+        status: 'OK',
+        produk: produk.data,
+        detail: {
+          total: produk.count,
+        },
+        notif: 'Produk berhasil diterbitkan'
       });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async	sortingProductsSellerLike(req, res) {
