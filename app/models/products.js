@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       Products.hasOne(models.Purchase, {
         foreignKey: 'id_produk',
       });
-      // define association here
     }
   }
   Products.init({

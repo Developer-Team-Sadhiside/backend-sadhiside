@@ -162,6 +162,7 @@ router.get(
   controllers.api.v1.historyController.ListAcceptedOffer,
 );
 
+
 appRouter.use(apiRouter);
 
 module.exports = router;
