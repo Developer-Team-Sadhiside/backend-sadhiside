@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Like extends Model {
     /**
@@ -11,21 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Like.belongsTo(models.Products, {
-        foreignKey: 'id_produk'
-      })
+        foreignKey: 'id_produk',
+      });
 
       Like.belongsTo(models.Users, {
-        foreignKey: 'id_pembeli'
-      })
+        foreignKey: 'id_pembeli',
+      });
     }
   }
   Like.init({
     isLike: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: false,
     },
     id_produk: DataTypes.INTEGER,
-    id_pembeli: DataTypes.INTEGER
+    id_pembeli: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Like',

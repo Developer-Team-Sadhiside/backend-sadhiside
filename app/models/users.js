@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
     /**
@@ -12,12 +12,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Users.hasMany(models.Products, {
         foreignKey: 'id_user',
-      })
+      });
 
       Users.hasMany(models.Like, {
-        foreignKey: 'id_pembeli'
-      })
+        foreignKey: 'id_pembeli',
+      });
 
+      Users.hasMany(models.Purchase, {
+        foreignKey: 'id_pembeli',
+      });
+
+      Users.hasMany(models.History, {
+        foreignKey: 'id_penjual',
+      });
     }
   }
   Users.init({
