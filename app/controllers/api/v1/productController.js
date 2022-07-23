@@ -10,7 +10,7 @@ module.exports = {
         kategori,
         deskripsi,
       } = req.body;
-      const data = await	productService.api.v1.productService.addProduct({
+      const data = await productService.api.v1.productService.addProduct({
         id_user: req.user.id,
         nama_produk,
         harga_produk,
@@ -230,7 +230,7 @@ module.exports = {
         ket = 'Produk sedang ditawar orang lain'
       }
       else if (produk.status == 'terjual'){
-        ket = 'Produk sudah terjual'
+        ket = 'Produk sudah terjual !'
       }
       res.status(200).json({
         status: 'OK',
