@@ -5,6 +5,7 @@ const {
   DB_PASSWORD = '',
   DB_HOST = '127.0.0.1',
   DB_NAME = 'db_secondhand',
+  DB_PORT = '5432'
 } = process.env;
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
     password: DB_PASSWORD,
     database: `${DB_NAME}_development`,
     host: DB_HOST,
+    port: DB_PORT,
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
@@ -26,6 +28,7 @@ module.exports = {
     password: DB_PASSWORD,
     database: `${DB_NAME}_test`,
     host: DB_HOST,
+    port: DB_PORT,
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
@@ -39,6 +42,7 @@ module.exports = {
     password: DB_PASSWORD,
     database: `${DB_NAME}_production`,
     host: DB_HOST,
+    port: DB_PORT,
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
