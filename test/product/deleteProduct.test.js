@@ -14,7 +14,7 @@ describe('DELETE /api/v1/product/:id', () => {
   });
 
   it('Where delete success will get status 200', (done) => {
-    request(app).delete('/api/v1/product/4') 
+    request(app).delete('/api/v1/product/6') 
       .set('content-type', 'application/octet-stream')
       .set('Authorization', `Bearer ${jwtToken}`)
       .then((response) => {

@@ -35,7 +35,7 @@ describe('Users', () => {
     .set('Accept', 'application/json')
     .send({
       nama: 'chandra',
-      email: 'test@gmail.com',
+      email: 'buyer@gmail.com',
       password: '123456',
     })
     .then((res) => {

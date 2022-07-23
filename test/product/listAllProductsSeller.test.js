@@ -8,8 +8,8 @@ describe('GET /api/v1/listProducts/seller', () => {
     loginUser = await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'rizki@gmail.com',
-        password: '12345',
+        email: 'seller@gmail.com',
+        password: '123456',
       });
     jwtToken = loginUser.body.token;
   });

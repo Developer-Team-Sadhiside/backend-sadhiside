@@ -18,7 +18,14 @@ describe('POST /api/v1/addProduct', () => {
         password: '123456',
       });
     jwtToken = loginUser.body.token;
-    console.log(jwtToken);
+
+    loginUser = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'buyernoprofile@gmail.com@gmail.com',
+        password: '123456',
+      });
+    jwtTokenBuyer = loginUser.body.token;
   });
 
   let product;
@@ -52,6 +59,30 @@ describe('POST /api/v1/addProduct', () => {
       expect.objectContaining({
         status: expect.any(String),
         data: expect.any(Object),
+      });
+      done();
+    })
+  });
+
+  it('When buyer try access to this point will get status 400', (done) => {
+    request(app).post('/api/v1/addProduct')
+    .set('content-type', 'application/octet-stream')
+    .set('Authorization', `Bearer ${jwtTokenBuyer}`)
+    .attach('gambar', image1)
+    .attach('gambar', image2)
+    .attach('gambar', image3)
+    .attach('gambar', image4)
+    .attach({
+      nama_produk: 'Redmi Note 10 Pro test',
+      harga_produk: '3999999',
+      kategori: 'Hp',
+      deskripsi: 'Hp bagus ',
+    })
+    .then((response) => {
+      expect(response.statusCode).toBe(400);
+      expect.objectContaining({
+        status: expect.any(String),
+        message: expect.any(String),
       });
       done();
     })

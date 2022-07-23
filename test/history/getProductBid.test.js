@@ -13,7 +13,8 @@ describe('GET /api/v1/history/seller', () => {
       });
     jwtToken = loginUser.body.token;
   });
-  it('Where seller success get offer, seller will get status 200', () => request(app)
+
+  it('Where seller success get all offer in their products, seller will get status 200', () => request(app)
   .get('/api/v1/history/seller')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
@@ -26,5 +27,4 @@ describe('GET /api/v1/history/seller', () => {
       }),
     );
   }));
-  
 });

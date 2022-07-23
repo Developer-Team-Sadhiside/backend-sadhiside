@@ -14,7 +14,7 @@ describe('GET /api/v1/history/seller/detailOffer/:id', () => {
     jwtToken = loginUser.body.token;
   });
   it('Where seller success get offer, seller will get status 200', () => request(app)
-  .get('/api/v1/history/seller/detailOffer/1')
+  .get('/api/v1/history/seller/detailOffer/3')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
   .then((res) => {
@@ -26,7 +26,8 @@ describe('GET /api/v1/history/seller/detailOffer/:id', () => {
       }),
     );
   }));
-  it('Where seller success get offer, seller will get status 200', () => request(app)
+
+  it('Where seller cant get offer, seller will get status 400', () => request(app)
   .get('/api/v1/history/seller/detailOffer/0')
   .set('authorization', `Bearer ${jwtToken}`)
   .set('Accept', 'application/json')
