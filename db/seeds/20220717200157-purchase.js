@@ -9,7 +9,32 @@ module.exports = {
       harga_tawar: 29000000,
       createdAt: new Date(),
       updatedAt: new Date(),
-    }]);
+    },
+    {
+      id_produk: 3,
+      id_pembeli: 1,
+      tanggal_pembelian: new Date(),
+      harga_tawar: 29000000,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      id_produk: 4,
+      id_pembeli: 1,
+      tanggal_pembelian: new Date(),
+      harga_tawar: 29000000,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      id_produk: 5,
+      id_pembeli: 1,
+      tanggal_pembelian: new Date(),
+      harga_tawar: 29000000,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+    ]);
   },
 
   async down (queryInterface, Sequelize) {

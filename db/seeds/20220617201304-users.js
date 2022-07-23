@@ -29,6 +29,18 @@ module.exports = {
       role: ['buyer','seller'],
       createdAt: new Date(),
       updatedAt: new Date(),
+    },
+    {
+      nama: 'buyernoprofile',
+      email: 'buyernoprofile@gmail.com',
+      password: encryptedPassword,
+      kota: null,
+      alamat: null,
+      no_hp: null,
+      foto: null,
+      role: ['buyer'],
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }
   ]);
   },
