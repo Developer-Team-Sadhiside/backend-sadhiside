@@ -99,52 +99,49 @@ module.exports = {
   },
 
   async	sortingProductsSellerLike(req, res) {
-    await productService.api.v1.productService.sortingProducts(req.user.id)
-      .then((data) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.sortingProducts(req.user.id)
+      res.status(200).json({
+        status: 'OK',
+        produk,
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async	listProductsSellerSold(req, res) {
-    await productService.api.v1.productService.listProductsSold(req.user.id)
-      .then((data) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.listProductsSold(req.user.id)
+      res.status(200).json({
+        status: 'OK',
+        produk,
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   // for buyer
   async	listAllProducts(req, res) {
-    await productService.api.v1.productService.listAll()
-      .then((produk) => {
-        res.status(200).json({
-          status: 'OK',
-          produk,
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.listAll()
+      res.status(200).json({
+        status: 'OK',
+        produk,
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async listAllProductsWithLike(req, res) {
@@ -183,38 +180,36 @@ module.exports = {
   },
 
   async	listProductByCategories(req, res) {
-    await productService.api.v1.productService.getByCategory(req.params.kategori)
-      .then(({ data, count }) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-          detail: {
-            total: count,
-          },
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.getByCategory(req.params.kategori)
+      res.status(200).json({
+        status: 'OK',
+        produk: produk.data,
+        detail: {
+          total: produk.count,
+        },
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   async	listProductsBuyerLike(req, res) {
-    await productService.api.v1.productService.listProductsLike(req.user.id)
-      .then((data) => {
-        res.status(200).json({
-          status: 'OK',
-          produk: data,
-        });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 'FAIL',
-          message: err.message,
-        });
+    try {
+      const produk = await productService.api.v1.productService.listProductsLike(req.user.id)
+      res.status(200).json({
+        status: 'OK',
+        produk,
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
   },
 
   // for general
@@ -233,6 +228,9 @@ module.exports = {
       } 
       else if (produk.status == 'pending'){
         ket = 'Produk sedang ditawar orang lain'
+      }
+      else if (produk.status == 'terjual'){
+        ket = 'Produk sudah terjual'
       }
       res.status(200).json({
         status: 'OK',
@@ -265,26 +263,4 @@ module.exports = {
       });
     }
   }
-  // const product = await productService.api.v1.productService.findProduct(req.params.id);
-  //   if (!product) {
-  //     res.status(400).json({
-  //       status: 'FAIL',
-  //       message: 'Product not found',
-  //     });
-  //     return
-  //   }
-    // await productService.api.v1.productService.findProduct(req.params.id)
-    //   .then((data) => {
-    //     res.status(200).json({
-    //       status: 'OK',
-    //       produk: data,
-
-    //     });
-    //   })
-    //   .catch((err) => {
-        // res.status(400).json({
-        //   status: 'FAIL',
-        //   message: err.message,
-        // });
-    //   });
 };

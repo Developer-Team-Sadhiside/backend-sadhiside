@@ -62,14 +62,7 @@ module.exports = {
   },
 
   async listProductsLike(id) {
-    try {
-      const product = await productRepository.api.v1.productRepository.findProductsLike(id);
-      return {
-        data: product,
-      };
-    } catch (err) {
-      throw err;
-    }
+    return await productRepository.api.v1.productRepository.findProductsLike(id);
   },
 
   async getOneProductLiked(idBuyer,idProduct) {
