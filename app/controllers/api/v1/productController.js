@@ -105,7 +105,7 @@ module.exports = {
         status: 'OK',
         produk,
       });
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
@@ -120,7 +120,7 @@ module.exports = {
         status: 'OK',
         produk,
       });
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
@@ -136,7 +136,7 @@ module.exports = {
         status: 'OK',
         produk,
       });
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
@@ -189,7 +189,7 @@ module.exports = {
           total: produk.count,
         },
       });
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
@@ -204,7 +204,7 @@ module.exports = {
         status: 'OK',
         produk,
       });
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
