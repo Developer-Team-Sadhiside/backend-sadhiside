@@ -1,7 +1,7 @@
-const api = require("./api");
-const authRepository = require("./authRepository");
+const api = require('./api');
+const userRepository = require('./userRepository');
 
 module.exports = {
   api,
-  authRepository,
+  userRepository,
 };

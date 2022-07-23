@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
@@ -6,7 +5,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nama: {
         type: Sequelize.STRING,
@@ -18,31 +17,31 @@ module.exports = {
         type: Sequelize.STRING,
       },
       kota: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       alamat: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       no_hp: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING,
+      },
+      foto: {
+        type: Sequelize.STRING,
       },
       role: {
-        type: Sequelize.ENUM,
-        allowNull: false,
-        values: ["seller", "buyer"],
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
-  }
+  },
 };
-
