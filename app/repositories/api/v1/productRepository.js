@@ -1,4 +1,4 @@
-const { Products, Users, Like, Purchase } = require('../../../models');
+const { Products, Users, Like, Purchase } = require("../../../models");
 
 module.exports = {
   async addProduct(inputData) {
@@ -6,31 +6,28 @@ module.exports = {
   },
 
   async findAll(args) {
-    return await Products.findAll(args,{
-      order: [
-        ['updateAt', 'ASC'],
-      ]
+    return await Products.findAll(args, {
+      order: [["updateAt", "ASC"]],
     });
   },
 
   async getProduct(id) {
     return await Products.findOne({
       where: {
-        id: id
+        id: id,
       },
-      include: [{
-        model: Users,
-        attributes: {
-          exclude: ['password'],
+      include: [
+        {
+          model: Users,
+          attributes: {
+            exclude: ["password"],
+          },
         },
-      },{
-        model: Purchase,
-      }],
+        {
+          model: Purchase,
+        },
+      ],
     });
-  },
-
-  async getTotalProduct(args) {
-    return await Products.count(args);
   },
 
   async getTotalProductByCategory(kategori) {
@@ -46,7 +43,6 @@ module.exports = {
       where: {
         id_user: id,
       },
-
     });
   },
 
@@ -74,12 +70,10 @@ module.exports = {
       include: {
         model: Like,
         where: {
-          isLike: true
-        }
+          isLike: true,
+        },
       },
-      order: [
-        ['totalLike', 'DESC'],
-      ]
+      order: [["totalLike", "DESC"]],
     });
   },
 
@@ -87,7 +81,7 @@ module.exports = {
     return await Products.findAll({
       where: {
         id_user: id,
-        status: 'terjual',
+        status: "terjual",
       },
     });
   },
@@ -104,7 +98,7 @@ module.exports = {
     });
   },
 
-  async findOneProductLiked(idBuyer,idProduct) {
+  async findOneProductLiked(idBuyer, idProduct) {
     return await Products.findOne({
       include: {
         model: Like,
@@ -114,7 +108,7 @@ module.exports = {
           isLike: true,
         },
       },
-    })
+    });
   },
 
   async updateProducts(id, updateArgs) {
