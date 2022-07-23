@@ -6,11 +6,5 @@ module.exports = {
   },
   async createHistory(data) {
     return await buyRepository.api.v1.buyRepository.historyCreated(data);
-  },
-  async getPurchase(id) {
-    return await buyRepository.api.v1.buyRepository.findOnePurchase(id);
-  },
-  async deleteSamePurchase(idProduct,idBuyer) {
-    return await buyRepository.api.v1.buyRepository.deletePurchase(idProduct,idBuyer);
-  },
+  }
 };

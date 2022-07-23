@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async findProduct(id) {
-      return await productRepository.api.v1.productRepository.getProduct(id);
+    return await productRepository.api.v1.productRepository.getProduct(id);
   },
 
   async getByCategory(kategori) {
