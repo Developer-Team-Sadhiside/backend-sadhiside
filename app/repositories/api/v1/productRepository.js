@@ -112,8 +112,8 @@ module.exports = {
     });
   },
 
-  async updateProducts(id, updateArgs) {
-    return await Products.update(updateArgs, {
+  async updateProducts(id, reqBody) {
+    return await Products.update(reqBody, {
       where: {
         id,
       },

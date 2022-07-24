@@ -144,10 +144,22 @@ router.post(
   controllers.api.v1.historyController.acceptOffer,
 );
 router.post(
+  '/api/v1/history/seller/acceptOffer/updateStatus:id',
+  controllers.api.v1.userController.authorize,
+  middlewares.checkUser.checkUserRole,
+  controllers.api.v1.historyController.updateStatusAcceptProduct,
+);
+router.post(
   '/api/v1/history/seller/rejectOffer/:id',
   controllers.api.v1.userController.authorize,
   middlewares.checkUser.checkUserRole,
   controllers.api.v1.historyController.rejectOffer,
+);
+router.post(
+  '/api/v1/history/seller/rejectOffer/updateStatus:id',
+  controllers.api.v1.userController.authorize,
+  middlewares.checkUser.checkUserRole,
+  controllers.api.v1.historyController.updateStatusRejectProduct,
 );
 router.get(
   '/api/v1/history/buyer/listProductsOffered',
