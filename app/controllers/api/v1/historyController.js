@@ -40,15 +40,28 @@ module.exports = {
 
   async acceptOffer(req,res){
     try{
-      await historyService.api.v1.historyService.updateProductOffer(req.params.id,{
-        status: 'terjual'
-      })
       const data = await historyService.api.v1.historyService.getAcceptedOffer(req.user.id,req.params.id)
       res.status(200).json({
         status: 'OK',
         data,
       });
     }catch(err){
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
+
+  async updateStatusAcceptProduct(req,res){
+    try {
+      await historyService.api.v1.historyService.updateProductOffer(req.params.id,{
+        status: 'terjual'
+      })
+      res.status(200).json({
+        message: 'Product has been updated'
+      });
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
@@ -67,6 +80,22 @@ module.exports = {
         message: 'Purchase has been deleted'
       });
     }catch(err){
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
+
+  async updateStatusRejectProduct(req,res){
+    try {
+      await historyService.api.v1.historyService.updateProductOffer(req.params.id,{
+        status: 'tersedia'
+      })
+      res.status(200).json({
+        message: 'Product has been updated'
+      });
+    } catch (err) {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
