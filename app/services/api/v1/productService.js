@@ -13,6 +13,10 @@ module.exports = {
     return await productRepository.api.v1.productRepository.getProduct(id);
   },
 
+  async findProductWhenOffer(idProduct,idBuyer) {
+    return await productRepository.api.v1.productRepository.getProductWhenOffer(idProduct,idBuyer);
+  },
+
   async getByCategory(kategori) {
     try {
       const product = await productRepository.api.v1.productRepository.findByCategory(kategori);

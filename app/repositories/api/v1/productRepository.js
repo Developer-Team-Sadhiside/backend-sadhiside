@@ -27,7 +27,30 @@ module.exports = {
           model: Purchase,
         },
         {
-          model: Like
+          model: Like,
+        }
+      ],
+    });
+  },
+
+  async getProductWhenOffer(idProduct,idBuyer) {
+    return await Products.findOne({
+      include: [
+        {
+          model: Users,
+          attributes: {
+            exclude: ["password"],
+          },
+        },
+        {
+          model: Purchase,
+        },
+        {
+          model: Like,
+          where:{
+            id_pembeli: idBuyer,
+            id_produk: idProduct,
+          }
         }
       ],
     });

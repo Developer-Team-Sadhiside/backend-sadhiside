@@ -216,7 +216,7 @@ module.exports = {
   async	findOneProductWhenOffer(req, res) {
     try{
       let ket = ''
-      const produk = await productService.api.v1.productService.findProduct(req.params.id);
+      const produk = await productService.api.v1.productService.findProductWhenOffer(req.params.id,req.user.id);
       if (!produk) {
         throw new Error ('Product not found')
       }
