@@ -247,11 +247,10 @@ module.exports = {
 
   async findOneProduct (req,res) {
     try{
-      const product = await productService.api.v1.productService.findProduct(req.params.id);
-      if (!product) {
+      const produk = await productService.api.v1.productService.findProduct(req.params.id);
+      if (!produk) {
         throw new Error ('Product not found')
       }
-      const produk = await productService.api.v1.productService.findProduct(req.params.id)
       res.status(200).json({
         status: 'OK',
         produk,

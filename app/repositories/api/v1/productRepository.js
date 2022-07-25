@@ -26,6 +26,9 @@ module.exports = {
         {
           model: Purchase,
         },
+        {
+          model: Like
+        }
       ],
     });
   },
